@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="manifest" href="manifest.json"> -->
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="nose.js" defer></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css?v=1.0.9">
+    <script type="module" src="nose.js?v=1.0.2" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
@@ -438,15 +438,21 @@
                                 <th class="Columna1">Bebida</th>
                                 <th class="Columna2">Leche</th>
                                 <th class="Columna3">Saborizante</th>
+                                <th class="Columna4">X</th>
                             </tr>
                             <tbody id="listaEnTabla" class="insertarTabla">
                         </table>
                         <input type="text" id="nombreCliente" class="inputNombre" placeholder="Nombre del cliente">
                         <input type="text" id="notaPedido" class="inputNombre" placeholder="Nota (opcional)">
+                        <div class="radiobtns">
+                            <input type="radio" id="paraLlevar" name="tipoPedido" value="Para llevar">
+                            <label for="paraLlevar">Para Llevar</label>
+                            <input type="radio" id="paraAqui" name="tipoPedido" value="Para Aqui">
+                            <label for="paraAqui">Para Aqui</label>
+                        </div>
                     </div>
-                <button class="ventanaConfirmacion_button" id="btnconfirmarEnvio" onclick="confirmarEnvio()">Confirmar</button>
+                <button class="ventanaConfirmacion_button" id="btnconfirmarEnvio" onclick="confirmarEnvio()">Enviar</button>
                 <button class="ventanaConfirmacion_button" id="btnseguirComprando" onclick="cerrarVentana('dialog_ventanaConfirmacion')">Seguir Agregando</button>
-                <button class="ventanaConfirmacion_button" id="btnlimpiarCarrito" onclick="limpiarCarrito(), cerrarVentana('dialog_ventanaConfirmacion')">Limpiar Carrito</button>
             </div>
         </dialog>
     </main>

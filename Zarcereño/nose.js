@@ -30,6 +30,9 @@ function confirmarEnvio() {
     const nombreCliente = document.getElementById('nombreCliente').value || "";
     const inputNota = document.getElementById('notaPedido');
     const notaPedido = inputNota ? inputNota.value : "";
+
+    const tipoPedidoElement = document.querySelector('input[name="tipoPedido"]:checked');
+    const tipoPedido = tipoPedidoElement ? tipoPedidoElement.value : "No especificado";
     
     // Si el carrito está vacío, no enviar nada
     if (carrito.length === 0) {
@@ -47,6 +50,7 @@ function confirmarEnvio() {
     set(nuevoPedidoRef, {
         cliente: nombreCliente,
         nota: notaPedido,
+        tipo: tipoPedido,
         items: carrito,
         fecha: new Date().toISOString()
     })

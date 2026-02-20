@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 html, body {
@@ -14,7 +15,6 @@ html, body {
 }
 
 body{
-    font-family: Arial, sans-serif;
     background-color: white;
     padding-top: var(--nav-height);
 }
@@ -57,8 +57,9 @@ body{
     padding: 10px 10px;
     background-color: rgb(121, 184, 121);
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
+    width: 100px;
 }
 
 .section{
@@ -136,166 +137,166 @@ body{
 }
 
 .cafe{
-    background-image: url('Imagenes/Americano.png');
+    background-image: url('../Imagenes/Americano.png');
 }
 
 .Mokaccino{
-    background-image: url('Imagenes/Mocachino.png');
+    background-image: url('../Imagenes/Mocachino.png');
 }
 .Latte{
-    background-image: url('Imagenes/Latte.png');
+    background-image: url('../Imagenes/Latte.png');
 }
 .ChocolateCaliente{
-    background-image: url('Imagenes/ChocolateCaliente.png');
+    background-image: url('../Imagenes/ChocolateCaliente.png');
 }
 .Espresso{
-    background-image: url('Imagenes/Espresso.png');
+    background-image: url('../Imagenes/Espresso.png');
 }
 .Macchiato{
-    background-image: url('Imagenes/Macchiato.png');
+    background-image: url('../Imagenes/Macchiato.png');
 }
 .Fresa{
-    background-image: url('Imagenes/Fresa.png');
+    background-image: url('../Imagenes/Fresa.png');
 }
 .Piña{
-    background-image: url('Imagenes/Piña.png');
+    background-image: url('../Imagenes/Piña.png');
 }
 .Banano{
-    background-image: url('Imagenes/Banano.png');
+    background-image: url('../Imagenes/Banano.png');
 }
 .Mango{
-    background-image: url('Imagenes/Mango.png');
+    background-image: url('../Imagenes/Mango.png');
 }
 .Naranja{
-    background-image: url('Imagenes/Naranja.png');
+    background-image: url('../Imagenes/Naranja.png');
 }
 .Papaya{
-    background-image: url('Imagenes/Papaya.png');
+    background-image: url('../Imagenes/Papaya.png');
 }
 .Kiwi{
-    background-image: url('Imagenes/Kiwi.png');
+    background-image: url('../Imagenes/Kiwi.png');
 }
 .Sandia{
-    background-image: url('Imagenes/Sandia.png');
+    background-image: url('../Imagenes/Sandia.png');
 }
 .Mora{
-    background-image: url('Imagenes/Mora.png');
+    background-image: url('../Imagenes/Mora.png');
 }
 
 .Maracuya{
-    background-image: url('Imagenes/Maracuya.png');
+    background-image: url('../Imagenes/Maracuya.png');
 }
 .Melocoton{
-    background-image: url('Imagenes/Melocoton.png');
+    background-image: url('../Imagenes/Melocoton.png');
 }
 .Coco{
-    background-image: url('Imagenes/Coco.png');
+    background-image: url('../Imagenes/Coco.png');
 }
 .Arandano{
-    background-image: url('Imagenes/Arandano.png');
+    background-image: url('../Imagenes/Arandano.png');
 }
 .Guanabana{
-    background-image: url('Imagenes/Guanabana.png');
+    background-image: url('../Imagenes/Guanabana.png');
 }
 
 .Cappuchino{
-    background-image: url('Imagenes/Capuchino.png');
+    background-image: url('../Imagenes/Capuchino.png');
 }
 
 .MilkShake{
-    background-image: url('Imagenes/MilkShakeFresa.png');
+    background-image: url('../Imagenes/MilkShake.png');
 }
 
 .Matcha{
-    background-image: url('Imagenes/Matcha.png');
+    background-image: url('../Imagenes/Matcha.png');
 }
 
 .lecheRegular{
-    background-image: url('Imagenes/LecheEntera.png');
+    background-image: url('../Imagenes/LecheEntera.png');
 }
 .lecheSemiDescremada{
-    background-image: url('Imagenes/LecheRegular.png');
+    background-image: url('../Imagenes/LecheRegular.png');
 }
 .lecheDelactomy{
-    background-image: url('Imagenes/LecheDelactomy.png');
+    background-image: url('../Imagenes/LecheDelactomy.png');
 }
 
 .lecheAlmendra{
-    background-image: url('Imagenes/LecheAlmendras.png');
+    background-image: url('../Imagenes/LecheAlmendras.png');
 }
 
 .lecheAvena{
-    background-image: url('Imagenes/LecheAvena.png');
+    background-image: url('../Imagenes/LecheAvena.png');
 }
 
 .Vainilla{
-    background-image: url('Imagenes/Vainilla.png');
+    background-image: url('../Imagenes/Vainilla.png');
 }
 .Caramelo{
-    background-image: url('Imagenes/Caramelo.png');
+    background-image: url('../Imagenes/Caramelo.png');
 }
 .CremaAvellanas{
-    background-image: url('Imagenes/CremaAvellanas.png');
+    background-image: url('../Imagenes/CremaAvellanas.png');
 }
 .CremaIrlandesa{
-    background-image: url('Imagenes/CremaIrlandesa.png');
+    background-image: url('../Imagenes/CremaIrlandesa.png');
 }
 .ShakeCoffeeHouse{
-    background-image: url('Imagenes/ShakeCoffeeHouse.png');
+    background-image: url('../Imagenes/ShakeCoffeeHouse.png');
 }
 .IcedChocolate{
-    background-image: url('Imagenes/IcedChocolate.png');
+    background-image: url('../Imagenes/IcedChocolate.png');
 }
 .Frappuchino{
-    background-image: url('Imagenes/Frappuchino.png');
+    background-image: url('../Imagenes/Frappuchino.png');
 }
 .Affogato{
-    background-image: url('Imagenes/Affogato.png');
+    background-image: url('../Imagenes/Affogato.png');
 }
 .ColdBrew{
-    background-image: url('Imagenes/ColdBrew.png');
+    background-image: url('../Imagenes/ColdBrew.png');
 }
 .IcedLatte{
-    background-image: url('Imagenes/IcedLatte.png');
+    background-image: url('../Imagenes/IcedLatte.png');
 }
 .HeladoVainilla{
-    background-image: url('Imagenes/HeladoVainilla.png');
+    background-image: url('../Imagenes/HeladoVainilla.png');
 }
 .HeladoFresa{
-    background-image: url('Imagenes/HeladoFresa.png');
+    background-image: url('../Imagenes/HeladoFresa.png');
 }
 .HeladoChocolate{
-    background-image: url('Imagenes/HeladoChocolate.png');
+    background-image: url('../Imagenes/HeladoChocolate.png');
 }
 .HeladoChocochips{
-    background-image: url('Imagenes/HeladoChocochips.png');
+    background-image: url('../Imagenes/HeladoChocochips.png');
 }
 .HeladoGalleta{
-    background-image: url('Imagenes/HeladoGalleta.png');
+    background-image: url('../Imagenes/HeladoGalleta.png');
 }
 .EspressoDoble{
-    background-image: url('Imagenes/EspressoDoble.png');
+    background-image: url('../Imagenes/EspressoDoble.png');
 }
 .Cortado{
-    background-image: url('Imagenes/Cortado.png');
+    background-image: url('../Imagenes/Cortado.png');
 }
 .FlatWhite{
-    background-image: url('Imagenes/FlatWhite.png');
+    background-image: url('../Imagenes/FlatWhite.png');
 }
 .IcedAmericano{
-    background-image: url('Imagenes/IcedAmericano.png');
+    background-image: url('../Imagenes/IcedAmericano.png');
 }
 .ColdBrewLatte{
-    background-image: url('Imagenes/ColdBrewLatte.png');
+    background-image: url('../Imagenes/ColdBrewLatte.png');
 }
 .Frappe{
-    background-image: url('Imagenes/Frappe.png');
+    background-image: url('../Imagenes/Frappe.png');
 }
 .MatchaMango{
-    background-image: url('Imagenes/MatchaMango.png');
+    background-image: url('../Imagenes/MatchaMango.png');
 }
 .MatchaFresa{
-    background-image: url('Imagenes/MatchaFresa.png');
+    background-image: url('../Imagenes/MatchaFresa.png');
 }
 
 
@@ -350,13 +351,14 @@ body{
     color: white;
     border: none;
     margin: 10px;
+    margin-left: 30px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .btnSalirDialog{
     padding: 10px 20px;
-    background-color: rgb(161, 64, 64);
+    background-color: rgb(153, 74, 74);
     color: white;
     border: none;
     margin-top: 50px;
@@ -365,7 +367,7 @@ body{
 }
 
 #btnseguirComprando{
-    background-color: rgb(170, 170, 84);
+    background-color: rgb(169, 170, 89);
 }
 #btnlimpiarCarrito{
     background-color: rgb(161, 64, 64);
@@ -387,7 +389,7 @@ table{
 }
 
 .tablaHeader{
-    background-color: rgb(128, 187, 128);
+    background-color: #333;
     color: white;
 }
 
@@ -406,7 +408,11 @@ th, td{
     border: 1px solid #333;
 }
 
-
-
-
+dialog label{
+    margin-right: 20px;
+    font-size: 1.5rem;
+}
+.radiobtns{
+    margin: 20px;
+}
 

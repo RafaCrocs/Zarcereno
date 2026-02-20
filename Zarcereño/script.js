@@ -40,13 +40,13 @@ function crearTablaPedido(pedido, id) {
     // Encabezado del pedido
     let htmlContent = `
         <div class="pedido-header">
-            <h2>${pedido.cliente || 'Cliente'} - ${fecha}</h2>
-            
+            <h2>${pedido.cliente || ''} - ${fecha}</h2>
+            <h3>Tipo de pedido: ${pedido.tipo || 'No especificado'}</h3>
         </div>
         <table class="tablaPedido" border="1">
             <thead class="tablaEncabezado">
                 <tr>
-                    <th>Producto</th>
+                    <th>Bebida</th>
                     <th>Leche</th>
                     <th>Saborizante</th>
                 </tr>
