@@ -103,6 +103,19 @@
                             <div class="imagenPedido lecheRegular"></div>
                             <button class="btnAgregar" id="btnLecheRegular" name="nombreProducto" value="Leche Regular" onclick="agregarLeche(this)">AGREGAR</button>
                         </label>
+                        <!-- Leche Delactomy -->
+                        <label for="btnLecheDelactomy" class="caja">
+                            <p class="nombreProductos">Delactomy</p>
+                            <div class="imagenPedido lecheDelactomy"></div>
+                            <button class="btnAgregar" id="btnLecheDelactomy" name="nombreProducto" value="Leche Delactomy" onclick="agregarLeche(this)">AGREGAR</button>
+                        </label>
+                        
+                        <!-- Leche SemiDescremada -->
+                        <label for="btnLecheSemiDescremada" class="caja">
+                            <p class="nombreProductos">Semi Descremada</p>
+                            <div class="imagenPedido lecheSemiDescremada"></div>
+                            <button class="btnAgregar" id="btnLecheSemiDescremada" name="nombreProducto" value="Leche Semi Descremada" onclick="agregarLeche(this)">AGREGAR</button>
+                        </label>
 
                         <!-- Leche de Almendra -->
                         <label for="btnLecheAlmendra" class="caja">
@@ -117,18 +130,6 @@
                                 <div class="imagenPedido lecheAvena"></div>
                                 <button class="btnAgregar" id="btnLecheAvena" name="nombreProducto" value="Leche de Avena" onclick="agregarLeche(this)">AGREGAR</button>
                             </label>
-                        <!-- Leche SemiDescremada -->
-                        <label for="btnLecheSemiDescremada" class="caja">
-                            <p class="nombreProductos">Semi Descremada</p>
-                            <div class="imagenPedido lecheSemiDescremada"></div>
-                            <button class="btnAgregar" id="btnLecheSemiDescremada" name="nombreProducto" value="Leche Semi Descremada" onclick="agregarLeche(this)">AGREGAR</button>
-                        </label>
-                        <!-- Leche Entera -->
-                        <label for="btnLecheEntera" class="caja">
-                            <p class="nombreProductos">Entera</p>
-                            <div class="imagenPedido lecheEntera"></div>
-                            <button class="btnAgregar" id="btnLecheEntera" name="nombreProducto" value="Leche Entera" onclick="agregarLeche(this)">AGREGAR</button>
-                        </label>
                     </div>
                 </section>
                 <button class="btnSalirDialog" id="btnCerrarLeches" onclick="cerrarVentana('dialog_ventanaLeches')">Cancelar</button>
@@ -157,7 +158,7 @@
             </div>
         </dialog>
         <!-- Sección de Batidos en Leche -->
-        <h2 class="tituloSection" id="Batidos">Batidos en Leche</h2>
+        <h2 class="tituloSection" id="Batidos">Batidos</h2>
         <form>
             <section class="section" id="sectionBatidos">
                 <!-- Batido de Piña -->
@@ -219,6 +220,30 @@
                     <p class="nombreProductos">Maracuya</p>
                     <div class="imagenPedido Maracuya"></div>
                     <input type="checkbox" class="checkbox-batido" value=" Maracuya">
+                </label>
+                <!-- Batido de Guanabana -->
+                <label class="caja">
+                    <p class="nombreProductos">Guanabana</p>
+                    <div class="imagenPedido Guanabana"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Guanabana">
+                </label>
+                <!-- Batido de Melocoton -->
+                <label class="caja">
+                    <p class="nombreProductos">Melocoton</p>
+                    <div class="imagenPedido Melocoton"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Melocoton">
+                </label>
+                <!-- Batido de Arandano -->
+                <label class="caja">
+                    <p class="nombreProductos">Arandano</p>
+                    <div class="imagenPedido Arandano"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Arandano">
+                </label>
+                <!-- Batido de Coco -->
+                <label class="caja">
+                    <p class="nombreProductos">Coco</p>
+                    <div class="imagenPedido Coco"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Coco">
                 </label>
             </section>
             <input  type="button"class="btnAgregar btnAgregarBatidos" onclick="agregarBatido()" value="AGREGAR BATIDO"></input>
@@ -409,8 +434,8 @@
                 <p>¿Deseas enviar tu pedido?</p>
                     <div class="box">
                         <table class="tabla" border="1">
-                            <tr>
-                                <th class="Columna1">Producto</th>
+                            <tr class="tablaHeader">
+                                <th class="Columna1">Bebida</th>
                                 <th class="Columna2">Leche</th>
                                 <th class="Columna3">Saborizante</th>
                             </tr>
@@ -421,7 +446,7 @@
                     </div>
                 <button class="ventanaConfirmacion_button" id="btnconfirmarEnvio" onclick="confirmarEnvio()">Confirmar</button>
                 <button class="ventanaConfirmacion_button" id="btnseguirComprando" onclick="cerrarVentana('dialog_ventanaConfirmacion')">Seguir Agregando</button>
-                <button class="ventanaConfirmacion_button" id="btnlimpiarCarrito" onclick="limpiarCarrito()">Limpiar Carrito</button>
+                <button class="ventanaConfirmacion_button" id="btnlimpiarCarrito" onclick="limpiarCarrito(), cerrarVentana('dialog_ventanaConfirmacion')">Limpiar Carrito</button>
             </div>
         </dialog>
     </main>

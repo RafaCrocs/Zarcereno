@@ -185,6 +185,18 @@ body{
 .Maracuya{
     background-image: url('Imagenes/Maracuya.png');
 }
+.Melocoton{
+    background-image: url('Imagenes/Melocoton.png');
+}
+.Coco{
+    background-image: url('Imagenes/Coco.png');
+}
+.Arandano{
+    background-image: url('Imagenes/Arandano.png');
+}
+.Guanabana{
+    background-image: url('Imagenes/Guanabana.png');
+}
 
 .Cappuchino{
     background-image: url('Imagenes/Capuchino.png');
@@ -199,7 +211,13 @@ body{
 }
 
 .lecheRegular{
+    background-image: url('Imagenes/LecheEntera.png');
+}
+.lecheSemiDescremada{
     background-image: url('Imagenes/LecheRegular.png');
+}
+.lecheDelactomy{
+    background-image: url('Imagenes/LecheDelactomy.png');
 }
 
 .lecheAlmendra{
@@ -366,6 +384,11 @@ table{
     border-collapse: collapse;
     border: 2px solid black;
     margin: 20px 0;
+}
+
+.tablaHeader{
+    background-color: rgb(128, 187, 128);
+    color: white;
 }
 
 th, td{
