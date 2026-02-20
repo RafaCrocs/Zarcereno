@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="nose.js" defer></script>
+
+    <title>Zarcereño Afuera</title>
+</head>
+<body>
+    <nav class="navBar">
+        <ul class="nav_list">
+            <li class="nav_item"><a class="item_link"href="#Cafes">Cafes</a></li>
+            <li class="nav_item"><a class="item_link"href="#Batidos">Batidos</a></li>
+            <li class="nav_item"><a class="item_link"href="#Especiales">Especiales</a></li>
+            <li class="nav_item"><a class="item_link"href="#Futuro">Futuro</a></li>
+        </ul>
+        <button class="nav_button" id="carrito" onclick="mostrarVentana()">Carrito</button>
+    </nav>
+    <main>
+        <!-- Sección de Cafes -->
+        <h2 class="tituloSection" id="Cafes">Cafes</h2>
+        <section class="section" id="sectionCafes">
+            <!-- Americano -->
+            <label for="btnAmericano" class="caja">
+                <p class="nombreProductos">Americano</p>
+                <div class="imagenPedido cafe"></div>
+                <button class="btnAgregar" id="btnAmericano" name="nombreProducto" value="Americano" onclick="agregar(this), abrirTamaños()">AGREGAR</button>
+            </label>
+            <!-- Cappuchino -->
+            <label for="btnCappuchino" class="caja">
+                <p class="nombreProductos">Cappuchino</p>
+                <div class="imagenPedido Cappuchino"></div>
+                <button class="btnAgregar" id="btnCappuchino" name="nombreProducto" value="Cappuchino" onclick="agregar(this), abrirTamaños()">AGREGAR</button>
+            </label>
+            <!-- Mokaccino -->
+            <label for="btnMokaccino" class="caja">
+                <p class="nombreProductos">Mokaccino</p>
+                <div class="imagenPedido Mokaccino"></div>
+                <button class="btnAgregar" id="btnMokaccino" name="nombreProducto" value="Mokaccino" onclick="agregar(this), abrirTamaños()">AGREGAR</button>
+            </label>
+            <!-- Latte -->
+            <label for="btnLatte" class="caja" >
+                <p class="nombreProductos">Latte</p>
+                <div class="imagenPedido Latte"></div>
+                <button class="btnAgregar" id="btnLatte" name="nombreProducto" value="Latte" onclick="agregar(this), abrirTamaños()">AGREGAR</button>
+            </label>
+            <!-- Chocolate Caliente -->
+            <label for="btnChocolateCaliente" class="caja">
+                <p class="nombreProductos">Chocolate Caliente</p>
+                <div class="imagenPedido ChocolateCaliente"></div>
+                <button class="btnAgregar" id="btnChocolateCaliente" name="nombreProducto" value="Chocolate Caliente" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Espresso -->
+            <label for="btnEspresso" class="caja">
+                <p class="nombreProductos">Espresso</p>
+                <div class="imagenPedido Espresso"></div>
+                <button class="btnAgregar" id="btnEspresso" name="nombreProducto" value="Espresso" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Espresso Doble -->
+            <label for="btnEspressoDoble" class="caja">
+                <p class="nombreProductos">Espresso Doble</p>
+                <div class="imagenPedido EspressoDoble"></div>
+                <button class="btnAgregar" id="btnEspressoDoble" name="nombreProducto" value="Espresso Doble" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Macchiato -->
+            <label for="btnMacchiato" class="caja">
+                <p class="nombreProductos">Macchiato</p>
+                <div class="imagenPedido Macchiato"></div>
+                <button class="btnAgregar" id="btnMacchiato" name="nombreProducto" value="Macchiato" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Cortado -->
+            <label for="btnCortado" class="caja">
+                <p class="nombreProductos">Cortado</p>
+                <div class="imagenPedido Cortado"></div>
+                <button class="btnAgregar" id="btnCortado" name="nombreProducto" value="Cortado" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Flat White -->
+            <label for="btnFlatWhite" class="caja">
+                <p class="nombreProductos">Flat White</p>
+                <div class="imagenPedido FlatWhite"></div>
+                <button class="btnAgregar" id="btnFlatWhite" name="nombreProducto" value="Flat White" onclick="agregar(this)">AGREGAR</button>
+            </label>
+        </section>
+
+
+        <dialog class="dialog" id="dialog_ventanaLeches">
+            <div class="dialog_content">
+                <p class="tituloDialog">Tipo de Leche</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Sin Leche -->
+                        <label for="btnSinLeche" class="caja">
+                            <p class="nombreProductos">Agua / Sin Leche</p>
+                            <div class="imagenPedido SinLeche"></div>
+                            <button class="btnAgregar" id="btnSinLeche" name="nombreProducto" value="Agua / Sin Leche" onclick="agregarLeche(this)">AGREGAR</button>
+                        </label>
+                        <!-- Leche Regular -->
+                        <label for="btnLecheRegular" class="caja">
+                            <p class="nombreProductos">Regular</p>
+                            <div class="imagenPedido lecheRegular"></div>
+                            <button class="btnAgregar" id="btnLecheRegular" name="nombreProducto" value="Leche Regular" onclick="agregarLeche(this)">AGREGAR</button>
+                        </label>
+
+                        <!-- Leche de Almendra -->
+                        <label for="btnLecheAlmendra" class="caja">
+                            <p class="nombreProductos">Almendra</p>
+                            <div class="imagenPedido lecheAlmendra"></div>
+                            <button class="btnAgregar" id="btnLecheAlmendra" name="nombreProducto" value="Leche de Almendra" onclick="agregarLeche(this)">AGREGAR</button>
+                        </label>
+
+                        <!-- Leche de Avena -->
+                            <label for="btnLecheAvena" class="caja">
+                                <p class="nombreProductos">Avena</p>
+                                <div class="imagenPedido lecheAvena"></div>
+                                <button class="btnAgregar" id="btnLecheAvena" name="nombreProducto" value="Leche de Avena" onclick="agregarLeche(this)">AGREGAR</button>
+                            </label>
+                        <!-- Leche SemiDescremada -->
+                        <label for="btnLecheSemiDescremada" class="caja">
+                            <p class="nombreProductos">Semi Descremada</p>
+                            <div class="imagenPedido lecheSemiDescremada"></div>
+                            <button class="btnAgregar" id="btnLecheSemiDescremada" name="nombreProducto" value="Leche Semi Descremada" onclick="agregarLeche(this)">AGREGAR</button>
+                        </label>
+                        <!-- Leche Entera -->
+                        <label for="btnLecheEntera" class="caja">
+                            <p class="nombreProductos">Entera</p>
+                            <div class="imagenPedido lecheEntera"></div>
+                            <button class="btnAgregar" id="btnLecheEntera" name="nombreProducto" value="Leche Entera" onclick="agregarLeche(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarLeches" onclick="cerrarVentana('dialog_ventanaLeches')">Cancelar</button>
+            </div>
+        </dialog>
+        <dialog class="dialog" id="dialog_ventanaTamaños">
+            <div class="dialog_content">
+                <p class="tituloDialog">Tamaños</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Pequeño -->
+                        <label for="btnPequeno" class="caja">
+                            <p class="nombreProductos">Pequeño</p>
+                            <div class="imagenPedido Pequeno"></div>
+                            <button class="btnAgregar" id="btnPequeno" name="nombreProducto" value="Pequeño" onclick="elegirTamaño(this)">AGREGAR</button>
+                        </label>
+                        <!-- Grande -->
+                        <label for="btnGrande" class="caja">
+                            <p class="nombreProductos">Grande</p>
+                            <div class="imagenPedido Grande"></div>
+                            <button class="btnAgregar" id="btnGrande" name="nombreProducto" value="Grande" onclick="elegirTamaño(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarTamaños" onclick="cerrarVentana('dialog_ventanaTamaños')">Cancelar</button>
+            </div>
+        </dialog>
+        <!-- Sección de Batidos en Leche -->
+        <h2 class="tituloSection" id="Batidos">Batidos en Leche</h2>
+        <form>
+            <section class="section" id="sectionBatidos">
+                <!-- Batido de Piña -->
+                <label class="caja">
+                    <p class="nombreProductos">Piña</p>
+                    <div class="imagenPedido Piña"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Piña">
+                </label>
+                <!-- Batido de Banano -->
+                <label class="caja">
+                    <p class="nombreProductos">Banano</p>
+                    <div class="imagenPedido Banano"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Banano">
+                </label>
+                <!-- Batido de Mango -->
+                <label class="caja">
+                    <p class="nombreProductos">Mango</p>
+                    <div class="imagenPedido Mango"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Mango">
+                </label>
+                <!-- Batido de Naranja -->
+                <label class="caja">
+                    <p class="nombreProductos">Naranja</p>
+                    <div class="imagenPedido Naranja"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Naranja">
+                </label>
+                <!-- Batido de Papaya -->
+                <label class="caja">
+                    <p class="nombreProductos">Papaya</p>
+                    <div class="imagenPedido Papaya"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Papaya">
+                </label>
+                <!-- Kiwi-->
+                <label class="caja">
+                    <p class="nombreProductos">Kiwi</p>
+                    <div class="imagenPedido Kiwi"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Kiwi">
+                </label>
+                <!-- Batido de Sandia-->
+                <label class="caja">
+                    <p class="nombreProductos">Sandia</p>
+                    <div class="imagenPedido Sandia"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Sandia">
+                </label>
+                <!-- Batido de Fresa-->
+                <label class="caja">
+                    <p class="nombreProductos">Fresa</p>
+                    <div class="imagenPedido Fresa"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Fresa">
+                </label>
+                <!-- Batido de Mora-->
+                <label class="caja">
+                    <p class="nombreProductos">Mora</p>
+                    <div class="imagenPedido Mora"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Mora">
+                </label>
+                <!-- Batido de Maracuya-->
+                <label class="caja">
+                    <p class="nombreProductos">Maracuya</p>
+                    <div class="imagenPedido Maracuya"></div>
+                    <input type="checkbox" class="checkbox-batido" value=" Maracuya">
+                </label>
+            </section>
+            <input  type="button"class="btnAgregar btnAgregarBatidos" onclick="agregarBatido()" value="AGREGAR BATIDO"></input>
+        </form>
+        <!-- Sección de Especiales -->
+        <h2 class="tituloSection" id="Especiales">Especiales</h2>
+        <section class="section" id="sectionMilkShake">
+            <!-- Iced Latte-->
+            <label for="btnIcedLatte" class="caja">
+                <p class="nombreProductos">Iced Latte</p>
+                <div class="imagenPedido IcedLatte"></div>
+                <button class="btnAgregar" id="btnIcedLatte" value="Iced Latte" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Cold Brew-->
+            <label for="btnColdBrew" class="caja">
+                <p class="nombreProductos">Cold Brew</p>
+                <div class="imagenPedido ColdBrew"></div>
+                <button class="btnAgregar" id="btnColdBrew" value="Cold Brew" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Cold Brew Latte -->
+            <label for="btnColdBrewLatte" class="caja">
+                <p class="nombreProductos">Cold Brew Latte</p>
+                <div class="imagenPedido ColdBrewLatte"></div>
+                <button class="btnAgregar" id="btnColdBrewLatte" value="Cold Brew Latte" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Iced Americano -->
+            <label for="btnIcedAmericano" class="caja">
+                <p class="nombreProductos">Iced Americano</p>
+                <div class="imagenPedido IcedAmericano"></div>
+                <button class="btnAgregar" id="btnIcedAmericano" value="Iced Americano" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Frappe -->
+            <label for="btnFrappe" class="caja">
+                <p class="nombreProductos">Frappe</p>
+                <div class="imagenPedido Frappe"></div>
+                <button class="btnAgregar" id="btnFrappe" value="Frappe" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Affogato El Jardin -->
+            <label for="btnAffogatoElJardin" class="caja">
+                <p class="nombreProductos">Affogato El Jardin</p>
+                <div class="imagenPedido AffogatoElJardin"></div>
+                <button class="btnAgregar" id="btnAffogatoElJardin" value="Affogato El Jardin" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Affogato-->
+            <label for="btnAffogato" class="caja">
+                <p class="nombreProductos">Affogato</p>
+                <div class="imagenPedido Affogato"></div>
+                <button class="btnAgregar" id="btnAffogato" value="Affogato" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Shake Coffee House-->
+            <label for="btnShakeCoffeeHouse" class="caja">
+                <p class="nombreProductos">Shake Coffee House</p>
+                <div class="imagenPedido ShakeCoffeeHouse"></div>
+                <button class="btnAgregar" id="btnShakeCoffeeHouse" value="Shake Coffee House" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Frappuchino-->
+            <label for="btnFrappuchino" class="caja">
+                <p class="nombreProductos">Frappuchino</p>
+                <div class="imagenPedido Frappuchino"></div>
+                <button class="btnAgregar" id="btnFrappuchino" value="Frappuchino" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Iced Chocolate-->
+            <label for="btnIcedChocolate" class="caja">
+                <p class="nombreProductos">Iced Chocolate</p>
+                <div class="imagenPedido IcedChocolate"></div>
+                <button class="btnAgregar" id="btnIcedChocolate" value="Iced Chocolate" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- MilkShake-->
+            <label for="btnMilkShake" class="caja">
+                <p class="nombreProductos">MilkShake</p>
+                <div class="imagenPedido MilkShake"></div>
+                <button class="btnAgregar" id="btnMilkShake" value="MilkShake" onclick="agregar(this), abrirHelados()">AGREGAR</button>
+            </label>
+            <!-- Matcha -->
+            <label for="btnMatcha" class="caja">
+                <p class="nombreProductos">Matcha</p>
+                <div class="imagenPedido Matcha"></div>
+                <button class="btnAgregar" id="btnMatcha" value="Matcha" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Matcha Mango -->
+            <label for="btnMatchaMango" class="caja">
+                <p class="nombreProductos">Matcha Mango</p>
+                <div class="imagenPedido MatchaMango"></div>
+                <button class="btnAgregar" id="btnMatchaMango" value="Matcha Mango" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Matcha Fresa -->
+            <label for="btnMatchaFresa" class="caja">
+                <p class="nombreProductos">Matcha Fresa</p>
+                <div class="imagenPedido MatchaFresa"></div>
+                <button class="btnAgregar" id="btnMatchaFresa" value="Matcha Fresa" onclick="agregar(this)">AGREGAR</button>
+            </label>
+        </section>
+
+        <dialog class="dialog" id="dialog_ventanaSaborizantes">
+            <div class="dialog_content">
+                <p>Saborizante</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Regular -->
+                        <label for="btnRegular" class="caja">
+                            <p class="nombreProductos">Regular</p>
+                            <div class="imagenPedido Regular"></div>
+                            <button class="btnAgregar" id="btnRegular" name="nombreProducto" value="" onclick="agregarSaborizante(this)">AGREGAR</button>
+                        </label>
+                        <!-- Vainilla -->
+                        <label for="btnVainilla" class="caja">
+                            <p class="nombreProductos">Vainilla</p>
+                            <div class="imagenPedido Vainilla"></div>
+                            <button class="btnAgregar" id="btnVainilla" name="nombreProducto" value="Vainilla" onclick="agregarSaborizante(this)">AGREGAR</button>
+                        </label>
+                        <!-- Caramelo -->
+                        <label for="btnCaramelo" class="caja">
+                            <p class="nombreProductos">Caramelo</p>
+                            <div class="imagenPedido Caramelo"></div>
+                            <button class="btnAgregar" id="btnCaramelo" name="nombreProducto" value="Caramelo" onclick="agregarSaborizante(this)">AGREGAR</button>
+                        </label>
+                        <!-- Avellana -->
+                        <label for="btnAvellana" class="caja">
+                            <p class="nombreProductos">Avellana</p>
+                            <div class="imagenPedido CremaAvellanas"></div>
+                            <button class="btnAgregar" id="btnAvellana" name="nombreProducto" value="Avellana" onclick="agregarSaborizante(this)">AGREGAR</button>
+                        </label>
+                        <!-- Crema Irlandesa -->
+                        <label for="btnCremaIrlandesa" class="caja">
+                            <p class="nombreProductos">Crema Irlandesa</p>
+                            <div class="imagenPedido CremaIrlandesa"></div>
+                            <button class="btnAgregar" id="btnCremaIrlandesa" name="nombreProducto" value="Crema Irlandesa" onclick="agregarSaborizante(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarSaborizantes" onclick="cerrarVentana('dialog_ventanaSaborizantes')">Cancelar</button>
+            </div>
+        </dialog>
+
+        <dialog class="dialog" id="dialog_ventanaHelados">
+            <div class="dialog_content">
+                <p>Helado</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Helado de Vainilla -->
+                        <label for="btnHeladoVainilla" class="caja">
+                            <p class="nombreProductos">Vainilla</p>
+                            <div class="imagenPedido HeladoVainilla"></div>
+                            <button class="btnAgregar" id="btnHeladoVainilla" name="nombreProducto" value="Vainilla" onclick="agregarHelado(this)">AGREGAR</button>
+                        </label>
+                        <!-- Helado de Chocolate -->
+                        <label for="btnHeladoChocolate" class="caja">
+                            <p class="nombreProductos">Chocolate</p>
+                            <div class="imagenPedido HeladoChocolate"></div>
+                            <button class="btnAgregar" id="btnHeladoChocolate" name="nombreProducto" value="Chocolate" onclick="agregarHelado(this)">AGREGAR</button>
+                        </label>
+                        <!-- Helado de Fresa -->
+                        <label for="btnHeladoFresa" class="caja">
+                            <p class="nombreProductos">Fresa</p>
+                            <div class="imagenPedido HeladoFresa"></div>
+                            <button class="btnAgregar" id="btnHeladoFresa" name="nombreProducto" value="Fresa" onclick="agregarHelado(this)">AGREGAR</button>
+                        </label>
+                        <!-- Helado de Chocochips -->
+                        <label for="btnHeladoChocochips" class="caja">
+                            <p class="nombreProductos">Chocochips</p>
+                            <div class="imagenPedido HeladoChocochips"></div>
+                            <button class="btnAgregar" id="btnHeladoChocochips" name="nombreProducto" value="Chocochips" onclick="agregarHelado(this)">AGREGAR</button>
+                        </label>
+                        <!-- Helado de Galleta -->
+                        <label for="btnHeladoGalleta" class="caja">
+                            <p class="nombreProductos">Galleta</p>
+                            <div class="imagenPedido HeladoGalleta"></div>
+                            <button class="btnAgregar" id="btnHeladoGalleta" name="nombreProducto" value="Galleta" onclick="agregarHelado(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarHelados" onclick="cerrarVentana('dialog_ventanaHelados')">Cancelar</button>
+            </div>
+        </dialog>
+        <!-- Sección de Postres -->
+        <h2 class="tituloSection" id="Futuro">Futuro</h2>
+        <section class="section" id="sectionFuturo">
+            <!-- Futuro -->
+            <label for="Futuro" class="caja">
+                <p class="nombreProductos">Futuro</p>
+                <div class="imagenPedido Futuro"></div>
+                <button class="btnAgregar" id="btnMilkShakeFresa" value="Futuro" onclick="agregarCarrito(this), abrirLeches()">AGREGAR</button>
+            </label>
+        </section>
+        
+        <dialog  class="dialog" id="dialog_ventanaConfirmacion">
+            <div class="dialog_content">
+                <p>¿Deseas enviar tu pedido?</p>
+                    <div class="box">
+                        <table class="tabla" border="1">
+                            <tr>
+                                <th class="Columna1">Producto</th>
+                                <th class="Columna2">Leche</th>
+                                <th class="Columna3">Saborizante</th>
+                            </tr>
+                            <tbody id="listaEnTabla" class="insertarTabla">
+                        </table>
+                        <input type="text" id="nombreCliente" class="inputNombre" placeholder="Nombre del cliente">
+                        <input type="text" id="notaPedido" class="inputNombre" placeholder="Nota (opcional)">
+                    </div>
+                <button class="ventanaConfirmacion_button" id="btnconfirmarEnvio" onclick="confirmarEnvio()">Confirmar</button>
+                <button class="ventanaConfirmacion_button" id="btnseguirComprando" onclick="cerrarVentana('dialog_ventanaConfirmacion')">Seguir Agregando</button>
+                <button class="ventanaConfirmacion_button" id="btnlimpiarCarrito" onclick="limpiarCarrito()">Limpiar Carrito</button>
+            </div>
+        </dialog>
+    </main>
+    
+</body>
+</html>

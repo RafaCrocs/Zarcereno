@@ -1,0 +1,389 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0; /* Opcional: evita el scroll del body */
+}
+:root{
+    --nav-height: 60px;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: white;
+    padding-top: var(--nav-height);
+}
+
+.navBar{
+    background-color: #333;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: var(--nav-height);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nav_list{
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav_item{
+    padding: 14px 5px;
+    font-size: 1.1rem;
+}
+.item_link{
+    color: white;
+    text-decoration: none;
+}
+
+.nav_button{
+    margin-left: 10px;
+    margin-right: 5px;
+    padding: 10px 10px;
+    background-color: rgb(121, 184, 121);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.tituloSection{
+    width: 100%;
+    background-color: #666464;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+}
+
+
+.caja{
+    border: 2px solid black;
+    text-align: center;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 150px;
+    cursor: pointer;
+}
+
+
+
+.checkbox-batido {
+    width: 10px;
+    padding: 10px;
+    accent-color: rgb(121, 184, 121);
+    margin: 5px auto;
+}
+
+.caja:has(.checkbox-batido:checked) {
+    background-color: rgb(121, 184, 121);
+}
+
+
+.nombreProductos{
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.imagenPedido{
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.btnAgregar{
+    padding: 10px;
+    background-color: rgb(121, 184, 121);
+    border: none;
+    width: 100%;
+    color: white;
+    letter-spacing: 5px;
+    font-size: large;
+    cursor: pointer;
+}
+
+
+.btnAgregarBatidos {
+    width: 65%;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.cafe{
+    background-image: url('Imagenes/Americano.png');
+}
+
+.Mokaccino{
+    background-image: url('Imagenes/Mocachino.png');
+}
+.Latte{
+    background-image: url('Imagenes/Latte.png');
+}
+.ChocolateCaliente{
+    background-image: url('Imagenes/ChocolateCaliente.png');
+}
+.Espresso{
+    background-image: url('Imagenes/Espresso.png');
+}
+.Macchiato{
+    background-image: url('Imagenes/Macchiato.png');
+}
+.Fresa{
+    background-image: url('Imagenes/Fresa.png');
+}
+.Piña{
+    background-image: url('Imagenes/Piña.png');
+}
+.Banano{
+    background-image: url('Imagenes/Banano.png');
+}
+.Mango{
+    background-image: url('Imagenes/Mango.png');
+}
+.Naranja{
+    background-image: url('Imagenes/Naranja.png');
+}
+.Papaya{
+    background-image: url('Imagenes/Papaya.png');
+}
+.Kiwi{
+    background-image: url('Imagenes/Kiwi.png');
+}
+.Sandia{
+    background-image: url('Imagenes/Sandia.png');
+}
+.Mora{
+    background-image: url('Imagenes/Mora.png');
+}
+
+.Maracuya{
+    background-image: url('Imagenes/Maracuya.png');
+}
+
+.Cappuchino{
+    background-image: url('Imagenes/Capuchino.png');
+}
+
+.MilkShake{
+    background-image: url('Imagenes/MilkShakeFresa.png');
+}
+
+.Matcha{
+    background-image: url('Imagenes/Matcha.png');
+}
+
+.lecheRegular{
+    background-image: url('Imagenes/LecheRegular.png');
+}
+
+.lecheAlmendra{
+    background-image: url('Imagenes/LecheAlmendras.png');
+}
+
+.lecheAvena{
+    background-image: url('Imagenes/LecheAvena.png');
+}
+
+.Vainilla{
+    background-image: url('Imagenes/Vainilla.png');
+}
+.Caramelo{
+    background-image: url('Imagenes/Caramelo.png');
+}
+.CremaAvellanas{
+    background-image: url('Imagenes/CremaAvellanas.png');
+}
+.CremaIrlandesa{
+    background-image: url('Imagenes/CremaIrlandesa.png');
+}
+.ShakeCoffeeHouse{
+    background-image: url('Imagenes/ShakeCoffeeHouse.png');
+}
+.IcedChocolate{
+    background-image: url('Imagenes/IcedChocolate.png');
+}
+.Frappuchino{
+    background-image: url('Imagenes/Frappuchino.png');
+}
+.Affogato{
+    background-image: url('Imagenes/Affogato.png');
+}
+.ColdBrew{
+    background-image: url('Imagenes/ColdBrew.png');
+}
+.IcedLatte{
+    background-image: url('Imagenes/IcedLatte.png');
+}
+.HeladoVainilla{
+    background-image: url('Imagenes/HeladoVainilla.png');
+}
+.HeladoFresa{
+    background-image: url('Imagenes/HeladoFresa.png');
+}
+.HeladoChocolate{
+    background-image: url('Imagenes/HeladoChocolate.png');
+}
+.HeladoChocochips{
+    background-image: url('Imagenes/HeladoChocochips.png');
+}
+.HeladoGalleta{
+    background-image: url('Imagenes/HeladoGalleta.png');
+}
+.EspressoDoble{
+    background-image: url('Imagenes/EspressoDoble.png');
+}
+.Cortado{
+    background-image: url('Imagenes/Cortado.png');
+}
+.FlatWhite{
+    background-image: url('Imagenes/FlatWhite.png');
+}
+.IcedAmericano{
+    background-image: url('Imagenes/IcedAmericano.png');
+}
+.ColdBrewLatte{
+    background-image: url('Imagenes/ColdBrewLatte.png');
+}
+.Frappe{
+    background-image: url('Imagenes/Frappe.png');
+}
+.MatchaMango{
+    background-image: url('Imagenes/MatchaMango.png');
+}
+.MatchaFresa{
+    background-image: url('Imagenes/MatchaFresa.png');
+}
+
+
+
+
+
+
+
+
+.dialog_productos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    padding: 0px;
+}
+
+.dialog{
+    background-color: #0009;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.tituloDialog{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.dialog_content{
+    background-color: white;
+    width: auto;
+    height: auto;
+    padding: 10px 20px;
+}   
+
+
+
+.dialog_content > p{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.ventanaConfirmacion_button{
+    padding: 10px 20px;
+    background-color: rgb(121, 184, 121);
+    color: white;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btnSalirDialog{
+    padding: 10px 20px;
+    background-color: rgb(161, 64, 64);
+    color: white;
+    border: none;
+    margin-top: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#btnseguirComprando{
+    background-color: rgb(170, 170, 84);
+}
+#btnlimpiarCarrito{
+    background-color: rgb(161, 64, 64);
+}
+
+#btnEliminar{
+    padding: 5px;
+    font-size: 1rem;
+    background-color: rgb(161, 64, 64);
+    color: white;
+}
+
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black;
+    margin: 20px 0;
+}
+
+th, td{
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+}
+
+.inputNombre{
+    padding: 10px;
+    width: 60%;
+    margin: 20px auto;
+    display: block;
+    font-size: 1.2rem;
+    border: 1px solid #333;
+}
+
+
+
+
+

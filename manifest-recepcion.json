@@ -1,0 +1,9 @@
+{
+    "name": "Zarcereño Recepción",
+    "short_name": "Recepción",
+    "start_url": "./recepcion.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": []
+}

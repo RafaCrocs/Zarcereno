@@ -1,0 +1,61 @@
+*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+.header{
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
+
+
+.nuevoPedido {
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+
+.contenedor-pedidos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+.tablaPedido {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tablaEncabezado {
+    background-color: rgb(111, 194, 111);
+    font-weight: bold;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.notaPedido {
+    font-size: 1.5rem;
+    margin: 10px;
+    color: #555;
+    text-align: left;
+}
+
+.btnListo {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: rgb(177, 111, 111);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
