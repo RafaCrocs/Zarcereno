@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=1.0.9">
-    <script type="module" src="nose.js?v=1.0.2" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.1.0">
+    <script type="module" src="nose.js?v=1.0.4" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
@@ -335,7 +335,71 @@
                 <div class="imagenPedido MatchaFresa"></div>
                 <button class="btnAgregar" id="btnMatchaFresa" value="Matcha Fresa" onclick="agregar(this)">AGREGAR</button>
             </label>
+            <!-- Jugo Verde -->
+            <label for="btnJugoVerde" class="caja">
+                <p class="nombreProductos">Jugo Verde</p>
+                <div class="imagenPedido JugoVerde"></div>
+                <button class="btnAgregar" id="btnJugoVerde" value="Jugo Verde" onclick="agregar(this), abrirVentanaSaborizantesNaturales()">AGREGAR</button>
+            </label>
+            <!-- Granizado -->
+            <label for="btnGranizado" class="caja">
+                <p class="nombreProductos">Granizado</p>
+                <div class="imagenPedido Granizado"></div>
+                <button class="btnAgregar" id="btnGranizado" value="Granizado" onclick="agregar(this), abrirHelados()">AGREGAR</button>
+            </label>
+            <!-- Refresher -->
+            <label for="btnRefresher" class="caja">
+                <p class="nombreProductos">Refresher</p>
+                <div class="imagenPedido Refresher"></div>
+                <button class="btnAgregar" id="btnRefresher" value="Refresher" onclick="agregar(this), abrirVentanaRefresher()">AGREGAR</button>
+            </label>
+            <!-- Taro -->
+            <label for="btnTaro" class="caja">
+                <p class="nombreProductos">Taro</p>
+                <div class="imagenPedido Taro"></div>
+                <button class="btnAgregar" id="btnTaro" value="Taro" onclick="agregar(this)">AGREGAR</button>
+            </label>
+
         </section>
+
+        <dialog class="dialog" id="dialog_ventanaRefresher">
+            <div class="dialog_content">
+                <p>Refresher</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Refresher de Fresa -->
+                        <label for="btnRefresherFresa" class="caja">
+                            <p class="nombreProductos">Fresa</p>
+                            <div class="imagenPedido Fresa"></div>
+                            <button class="btnAgregar" id="btnRefresherFresa" name="nombreProducto" value="Fresa" onclick="agregarRefresher(this)">AGREGAR</button>
+                        </label>
+                        <!-- Refresher de Mango -->
+                        <label for="btnRefresherMango" class="caja">
+                            <p class="nombreProductos">Mango</p>
+                            <div class="imagenPedido Mango"></div>
+                            <button class="btnAgregar" id="btnRefresherMango" name="nombreProducto" value="Mango" onclick="agregarRefresher(this)">AGREGAR</button>
+                        </label>
+                        <!-- Refresher de Maracuya -->
+                        <label for="btnRefresherMaracuya" class="caja">
+                            <p class="nombreProductos">Maracuya</p>
+                            <div class="imagenPedido Maracuya"></div>
+                            <button class="btnAgregar" id="btnRefresherMaracuya" name="nombreProducto" value="Maracuya" onclick="agregarRefresher(this)">AGREGAR</button>
+                        </label>
+                        <!-- Refresher de Arandano -->
+                        <label for="btnRefresherArandano" class="caja">
+                            <p class="nombreProductos">Arandano</p>
+                            <div class="imagenPedido Arandano"></div>
+                            <button class="btnAgregar" id="btnRefresherArandano" name="nombreProducto" value="Arandano" onclick="agregarRefresher(this)">AGREGAR</button>
+                        </label>
+                        <!-- Refresher de Sandia -->
+                        <label for="btnRefresherSandia" class="caja">
+                            <p class="nombreProductos">Sandia</p>
+                            <div class="imagenPedido Sandia"></div>
+                            <button class="btnAgregar" id="btnRefresherSandia" name="nombreProducto" value="Sandia" onclick="agregarRefresher(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+        </dialog>
 
         <dialog class="dialog" id="dialog_ventanaSaborizantes">
             <div class="dialog_content">
@@ -378,11 +442,40 @@
             </div>
         </dialog>
 
+        <dialog class="dialog" id="dialog_ventanaSaborizantesNaturales">
+            <div class="dialog_content">
+                <p>Saborizante Natural</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Piña -->
+                        <label for="btnSaborizanteNaturalPiña" class="caja">
+                            <p class="nombreProductos">Piña</p>
+                            <div class="imagenPedido Piña"></div>
+                            <button class="btnAgregar" id="btnSaborizanteNaturalPiña" name="nombreProducto" value="Piña" onclick="agregarSaborizanteNatural(this)">AGREGAR</button>
+                        </label>
+                        <!-- Manzana Verde -->
+                        <label for="btnSaborizanteNaturalManzanaVerde" class="caja">
+                            <p class="nombreProductos">Manzana Verde</p>
+                            <div class="imagenPedido ManzanaVerde"></div>
+                            <button class="btnAgregar" id="btnSaborizanteNaturalManzanaVerde" name="nombreProducto" value="Manzana Verde" onclick="agregarSaborizanteNatural(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarSaborizantesNaturales" onclick="cerrarVentana('dialog_ventanaSaborizantesNaturles')">Cancelar</button>
+            </div>
+        </dialog>
+
         <dialog class="dialog" id="dialog_ventanaHelados">
             <div class="dialog_content">
                 <p>Helado</p>
                 <section class="section">
                     <div class="dialog_productos">
+                        <!-- Ninguno -->
+                        <label for="btnSinHelado" class="caja">
+                            <p class="nombreProductos">Ninguno</p>
+                            <div class="imagenPedido SinHelado"></div>
+                            <button class="btnAgregar" id="btnSinHelado" name="nombreProducto" value="" onclick="agregarHelado(this)">AGREGAR</button>
+                        </label>
                         <!-- Helado de Vainilla -->
                         <label for="btnHeladoVainilla" class="caja">
                             <p class="nombreProductos">Vainilla</p>

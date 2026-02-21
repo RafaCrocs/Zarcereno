@@ -298,6 +298,18 @@ body{
 .MatchaFresa{
     background-image: url('../Imagenes/MatchaFresa.png');
 }
+.JugoVerde{
+    background-image: url('../Imagenes/JugoVerde.png.jpeg');
+}
+.Refresher{
+    background-image: url('../Imagenes/Refresher.png.jpeg');
+}
+.Granizado{
+    background-image: url('../Imagenes/Granizado.jpeg');
+}
+.Taro{
+    background-image: url('../Imagenes/Taro.jpeg');
+}
 
 
 
