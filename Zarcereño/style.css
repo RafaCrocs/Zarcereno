@@ -36,10 +36,12 @@ body{
 }
 .nav_list{
     display: flex;
+    gap: 30px;
     list-style-type: none;
-    text-align: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .nav_item{
@@ -60,6 +62,11 @@ body{
     font-size: 1.2rem;
     cursor: pointer;
     width: 100px;
+}
+
+.btnHistorial{
+    margin-left: auto;
+    margin-right: 30px;
 }
 
 .section{
@@ -274,6 +281,33 @@ body{
 .HeladoGalleta{
     background-image: url('../Imagenes/HeladoGalleta.png');
 }
+.HeladoRonConFrutas{
+    background-image: url('../Imagenes/RonconFrutas.png');
+}
+.HeladoRonConPasas{
+    background-image: url('../Imagenes/RonconPasas.png');
+}
+.HeladoCoco{
+    background-image: url('../Imagenes/Coco.png');
+}
+.HeladoCarameloVainilla{
+    background-image: url('../Imagenes/CarameloVainilla.png');
+}
+.HeladoNaranjaPina{
+    background-image: url('../Imagenes/NaranjaPiña.png');
+}
+.HeladoCombinado{
+    background-image: url('../Imagenes/Combinado.png');
+}
+.HeladoNapolitano{
+    background-image: url('../Imagenes/Napolitano.png');
+}
+.HeladoFresaNieve{
+    background-image: url('../Imagenes/FresaNieve.png');
+}
+.HeladoChicle{
+    background-image: url('../Imagenes/Chicle.png');
+}
 .EspressoDoble{
     background-image: url('../Imagenes/EspressoDoble.png');
 }
@@ -310,6 +344,25 @@ body{
 .Taro{
     background-image: url('../Imagenes/Taro.jpeg');
 }
+.ChocolateOscuro{
+    background-image: url('../Imagenes/ChocolateNegro.png');
+}
+.Nuez{
+    background-image: url('../Imagenes/Nuez.png');
+}
+.Menta{
+    background-image: url('../Imagenes/Menta.png');
+}
+.Amaretto{
+    background-image: url('../Imagenes/Amaretto.png');
+}
+
+.Pequeno{
+    background-image: url('../Imagenes/VasoPequeño.png');
+}
+.Grande{
+    background-image: url('../Imagenes/VasoGrande.png');
+}
 
 
 
@@ -320,7 +373,7 @@ body{
 
 .dialog_productos{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     padding: 0px;
 }
@@ -378,6 +431,7 @@ body{
     font-size: 1rem;
 }
 
+
 #btnseguirComprando{
     background-color: rgb(169, 170, 89);
 }
@@ -388,6 +442,22 @@ body{
 #btnEliminar{
     padding: 5px;
     font-size: 1rem;
+    background-color: rgb(161, 64, 64);
+    color: white;
+}
+
+#btnAgregar{
+    width: 80%;
+    height: 40px;
+    font-size: 2rem;
+    background-color: rgb(121, 184, 121);
+    color: white;
+}
+
+#btnRestar{
+    width: 80%;
+    height: 40px;
+    font-size: 2rem;
     background-color: rgb(161, 64, 64);
     color: white;
 }
@@ -411,6 +481,7 @@ th, td{
     font-size: large;
 }
 
+
 .inputNombre{
     padding: 10px;
     width: 60%;
@@ -424,7 +495,12 @@ dialog label{
     margin-right: 20px;
     font-size: 1.5rem;
 }
-.radiobtns{
-    margin: 20px;
+
+.cheackbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 

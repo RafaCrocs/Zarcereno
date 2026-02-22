@@ -32,7 +32,7 @@ function confirmarEnvio() {
     const notaPedido = inputNota ? inputNota.value : "";
 
     const tipoPedidoElement = document.querySelector('input[name="tipoPedido"]:checked');
-    const tipoPedido = tipoPedidoElement ? tipoPedidoElement.value : "No especificado";
+    const tipoPedido = tipoPedidoElement ? tipoPedidoElement.value : "";
     
     // Si el carrito está vacío, no enviar nada
     if (carrito.length === 0) {
@@ -55,9 +55,17 @@ function confirmarEnvio() {
         fecha: new Date().toISOString()
     })
     .then(() => {
+        historial.push({
+            cliente: nombreCliente,
+            nota: notaPedido,
+            tipo: tipoPedido,
+            items: carrito,
+            fecha: new Date().toISOString()
+        });
         limpiarCarrito();
         document.getElementById('nombreCliente').value = ''; 
         if (inputNota) inputNota.value = '';
+        if(tipoPedidoElement) tipoPedidoElement.checked = false;
         cerrarVentana('dialog_ventanaConfirmacion');
     })
     .catch((error) => {
@@ -90,6 +98,7 @@ window.onpopstate = function () {
 };
 
 let carrito = [];
+let historial = [];
 let bebida;
 let leche;
 let saborizante;
@@ -114,7 +123,7 @@ function elegirTamaño(botonPulsado) {
 
 
 function abrirLeches() {
-    if(bebida.includes('Granizado') || bebida.includes('Jugo Verde') || bebida.includes('Refresher') || bebida.includes('Taro')) {
+    if(bebida.includes('Granizado') || bebida.includes('Jugo Verde') || bebida.includes('Refresher')|| bebida.includes('MilkShake')) {
         leche = '';
         abrirSaborizantes();
         return;
@@ -140,7 +149,7 @@ function abrirSaborizantes() {
         agregarCarrito();
         return;
     }
-    else if(bebida.includes('Jugo Verde') || bebida.includes('Refresher') || bebida.includes('Granizado')) {
+    else if(bebida.includes('Jugo Verde') || bebida.includes('Refresher') || bebida.includes('Granizado') || bebida.includes('MilkShake')) {
         return;
     }
     const saborizantes = document.getElementById('dialog_ventanaSaborizantes');
@@ -203,6 +212,7 @@ function agregarSaborizanteNatural(botonPulsado) {
 
 function agregarCarrito() {
     let producto = {
+        cantidad: 1,
         bebida: bebida,
         leche: leche,
         saborizante: saborizante
@@ -235,7 +245,10 @@ function crearTabla() {
     let htmlTabla = "";
     for (let i = Indice; i < carrito.length; i++) {
         htmlTabla += `
-            <tr>
+            <tr data-indice="${i}">
+                <td><button onclick="agregarCantidadDesdeBoton(this)" id="btnAgregar">+</button></td>
+                <td><button onclick="restarCantidadDesdeBoton(this)"  id="btnRestar">-</button></td>
+                <td>${carrito[i].cantidad}</td>
                 <td>${carrito[i].bebida}</td>
                 <td>${carrito[i].leche}</td>
                 <td>${carrito[i].saborizante}</td>
@@ -257,10 +270,84 @@ function eliminarProducto(indice) {
     crearTabla();
 }
 
-function abrirPantallaCompleta() {
-    const pantallaCompleta = document.getElementById('dialog_pantallaCompletada');
-    pantallaCompleta.style.display = 'block';
-    pantallaCompleta.showModal();
+function agregarCantidad(producto) {
+    producto.cantidad += 1;
+    Indice = 0;
+    const tabla = document.getElementById('listaEnTabla');
+    if (tabla) {
+        tabla.innerHTML = '';
+    }
+    crearTabla();
+}
+
+function restarCantidad(producto) {
+    producto.cantidad -= 1;
+    if (producto.cantidad <= 0) {
+        const indice = carrito.indexOf(producto);
+        if (indice !== -1) {
+            carrito.splice(indice, 1);
+        }
+    }
+    Indice = 0;
+    const tabla = document.getElementById('listaEnTabla');
+    if (tabla) {
+        tabla.innerHTML = '';
+    }
+    crearTabla();
+}
+
+function agregarCantidadDesdeBoton(boton) {
+    const fila = boton.closest('tr');
+    if (!fila) {
+        return;
+    }
+
+    const indice = Number(fila.dataset.indice);
+    if (!Number.isInteger(indice) || !carrito[indice]) {
+        return;
+    }
+
+    agregarCantidad(carrito[indice]);
+}
+
+function restarCantidadDesdeBoton(boton) {
+    const fila = boton.closest('tr');
+    if (!fila) {
+        return;
+    }
+
+    const indice = Number(fila.dataset.indice);
+    if (!Number.isInteger(indice) || !carrito[indice]) {
+        return;
+    }
+
+    restarCantidad(carrito[indice]);
+}
+
+function mostrarHistorial() {
+    const historial = document.getElementById('dialog_ventanaHistorial');
+    historial.style.display = 'block';
+    historial.showModal();
+}
+
+function crearTablaHistorial() {
+    let htmlTabla = "";
+    const ultimos10 = historial.slice(-10).reverse();
+
+    ultimos10.forEach((pedido) => {
+        const hora = pedido.fecha
+            ? new Date(pedido.fecha).toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit' })
+            : '';
+        htmlTabla += `
+            <tr>
+                <td>${pedido.cliente}</td>
+                <td>${pedido.items.map(item => item.bebida).join(', ')}</td>
+                <td>${pedido.nota}</td>
+                <td>${pedido.tipo}</td>
+                <td>${hora}</td>
+            </tr>`;
+    });
+    document.getElementById('listaHistorial').innerHTML = htmlTabla;
 }
 
 
@@ -281,8 +368,13 @@ window.agregarBatido = agregarBatido;
 window.eliminarProducto = eliminarProducto;
 window.crearTabla = crearTabla;
 window.limpiarCarrito = limpiarCarrito;
-window.abrirPantallaCompleta = abrirPantallaCompleta;
 window.abrirVentanaRefresher = abrirVentanaRefresher;
 window.agregarRefresher = agregarRefresher;
 window.abrirVentanaSaborizantesNaturales = abrirVentanaSaborizantesNaturales;
 window.agregarSaborizanteNatural = agregarSaborizanteNatural;
+window.mostrarHistorial = mostrarHistorial;
+window.crearTablaHistorial = crearTablaHistorial;
+window.agregarCantidad = agregarCantidad;
+window.agregarCantidadDesdeBoton = agregarCantidadDesdeBoton;
+window.restarCantidad = restarCantidad;
+window.restarCantidadDesdeBoton = restarCantidadDesdeBoton;

@@ -1,6 +1,9 @@
 import { database } from "./firebase-config.js";
 import { ref, onChildAdded, remove, onChildRemoved } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
+// Contador para colores secuenciales
+let contadorPedidos = 0;
+
 // Bloquear el botón de retroceso
 history.pushState(null, null, location.href);
 window.onpopstate = function () {
@@ -29,23 +32,28 @@ function iniciarEscuchaPedidos() {
 }
 
 function crearTablaPedido(pedido, id) {
+    let colores = ['rgb(111, 194, 111)', 'rgb(255, 255, 153)', 'rgb(153, 204, 255)'];
     const contenedor = document.getElementById('contenedorPedidos');
-    const fecha = pedido.fecha ? new Date(pedido.fecha).toLocaleTimeString() : 'Hora desconocida';
-    
+    const hora = pedido.fecha
+            ? new Date(pedido.fecha).toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit' })
+            : '';
     // Crear contenedor para este pedido
     const divPedido = document.createElement('div');
     divPedido.className = 'nuevoPedido';
     divPedido.dataset.id = id;
+    const colorAleatorio = colores[contadorPedidos % colores.length];
+    contadorPedidos++;
 
     // Encabezado del pedido
     let htmlContent = `
         <div class="pedido-header">
-            <h2>${pedido.cliente || ''} - ${fecha}</h2>
-            <h3>Tipo de pedido: ${pedido.tipo || 'No especificado'}</h3>
+            <h2>${pedido.cliente || ''} - ${hora}</h2>
+            <h3 style="color: red;">${pedido.tipo || ''}</h3>
         </div>
         <table class="tablaPedido" border="1">
-            <thead class="tablaEncabezado">
+            <thead class="tablaEncabezado" id="tablaEncabezado" style="background-color: ${colorAleatorio};">
                 <tr>
+                    <th>Cantidad</th>
                     <th>Bebida</th>
                     <th>Leche</th>
                     <th>Saborizante</th>
@@ -54,10 +62,13 @@ function crearTablaPedido(pedido, id) {
             <tbody>
     `;
 
+
     // Filas de productos
     pedido.items.forEach(item => {
+
         htmlContent += `
             <tr>
+                <td>${item.cantidad || 1}</td>
                 <td>${item.bebida || '-'}</td>
                 <td>${item.leche || '-'}</td>
                 <td>${item.saborizante || '-'}</td>
