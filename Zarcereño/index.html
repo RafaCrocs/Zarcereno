@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=1.1.6">
-    <script type="module" src="nose.js?v=1.0.7" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.1.7">
+    <script type="module" src="nose.js?v=1.0.8" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
@@ -14,7 +14,7 @@
         <ul class="nav_list">
             <li class="nav_item"><a class="item_link"href="#Cafes">Cafes</a></li>
             <li class="nav_item"><a class="item_link"href="#Batidos">Batidos</a></li>
-            <li class="nav_item"><a class="item_link"href="#Especiales">Especiales</a></li>
+            <li class="nav_item"><a class="item_link"href="#Frios">Frios</a></li>
             <li class="nav_item"><a class="item_link"href="#Futuro">Futuro</a></li>
             <button class="nav_button" id="carrito" onclick="mostrarVentana()">Carrito</button>
         </ul>
@@ -55,7 +55,7 @@
             <label for="btnChocolateCaliente" class="caja">
                 <p class="nombreProductos">Chocolate Caliente</p>
                 <div class="imagenPedido ChocolateCaliente"></div>
-                <button class="btnAgregar" id="btnChocolateCaliente" name="nombreProducto" value="Chocolate Caliente" onclick="agregar(this)">AGREGAR</button>
+                <button class="btnAgregar" id="btnChocolateCaliente" name="nombreProducto" value="Chocolate Caliente" onclick="agregar(this), abrirTamaños()">AGREGAR</button>
             </label>
             <!-- Espresso -->
             <label for="btnEspresso" class="caja">
@@ -252,8 +252,8 @@
             </section>
             <input  type="button"class="btnAgregar btnAgregarBatidos" onclick="agregarBatido()" value="AGREGAR BATIDO"></input>
         </form>
-        <!-- Sección de Especiales -->
-        <h2 class="tituloSection" id="Especiales">Especiales</h2>
+        <!-- Sección de Frios -->
+        <h2 class="tituloSection" id="Frios">Frios</h2>
         <section class="section" id="sectionMilkShake">
             <!-- Iced Latte-->
             <label for="btnIcedLatte" class="caja">
@@ -278,12 +278,6 @@
                 <p class="nombreProductos">Iced Americano</p>
                 <div class="imagenPedido IcedAmericano"></div>
                 <button class="btnAgregar" id="btnIcedAmericano" value="Iced Americano" onclick="agregar(this)">AGREGAR</button>
-            </label>
-            <!-- Frappe -->
-            <label for="btnFrappe" class="caja">
-                <p class="nombreProductos">Frappe</p>
-                <div class="imagenPedido Frappe"></div>
-                <button class="btnAgregar" id="btnFrappe" value="Frappe" onclick="agregar(this)">AGREGAR</button>
             </label>
             <!-- Affogato El Jardin -->
             <label for="btnAffogatoElJardin" class="caja">
@@ -355,7 +349,7 @@
             <label for="btnRefresher" class="caja">
                 <p class="nombreProductos">Refresher</p>
                 <div class="imagenPedido Refresher"></div>
-                <button class="btnAgregar" id="btnRefresher" value="Refresher" onclick="agregar(this), abrirVentanaRefresher()">AGREGAR</button>
+                <button class="btnAgregar" id="btnRefresher" value="Refresher" onclick="agregar(this), abrirVentanaBubbles(), abrirVentanaRefresher()">AGREGAR</button>
             </label>
             <!-- Taro -->
             <label for="btnTaro" class="caja">
@@ -403,6 +397,7 @@
                         </label>
                     </div>
                 </section>
+                <button class="btnSalirDialog" id="btnCerrarRefresher" onclick="cerrarVentana('dialog_ventanaRefresher')">Cancelar</button>
         </dialog>
 
         <dialog class="dialog" id="dialog_ventanaSaborizantes">
@@ -489,7 +484,53 @@
                         </label>
                     </div>
                 </section>
-                <button class="btnSalirDialog" id="btnCerrarSaborizantesNaturales" onclick="cerrarVentana('dialog_ventanaSaborizantesNaturles')">Cancelar</button>
+                <button class="btnSalirDialog" id="btnCerrarSaborizantesNaturales" onclick="cerrarVentana('dialog_ventanaSaborizantesNaturales')">Cancelar</button>
+            </div>
+        </dialog>
+        <dialog class="dialog" id="dialog_ventanaBubbles">
+            <div class="dialog_content">
+                <p>Topping</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Bubble Fresa -->
+                        <label for="btnBubbleFresa" class="caja">
+                            <p class="nombreProductos">Bubble Fresa</p>
+                            <div class="imagenPedido BubbleFresa"></div>
+                            <button class="btnAgregar" id="btnBubbleFresa" name="nombreProducto" value="Bubble Fresa" onclick="agregarBubbles(this)">AGREGAR</button>
+                        </label>
+                        <!-- Bubble Mango -->
+                        <label for="btnBubbleMango" class="caja">
+                            <p class="nombreProductos">Bubble Mango</p>
+                            <div class="imagenPedido BubbleMango"></div>
+                            <button class="btnAgregar" id="btnBubbleMango" name="nombreProducto" value="Bubble Mango" onclick="agregarBubbles(this)">AGREGAR</button>
+                        </label>
+                        <!-- Bubble Maracuya -->
+                        <label for="btnBubbleMaracuya" class="caja">
+                            <p class="nombreProductos">Bubble Maracuya</p>
+                            <div class="imagenPedido BubbleMaracuya"></div>
+                            <button class="btnAgregar" id="btnBubbleMaracuya" name="nombreProducto" value="Bubble Maracuya" onclick="agregarBubbles(this)">AGREGAR</button>
+                        </label>
+                        <!-- Bubble Arandano -->
+                        <label for="btnBubbleArandano" class="caja">
+                            <p class="nombreProductos">Bubble Arandano</p>
+                            <div class="imagenPedido BubbleArandano"></div>
+                            <button class="btnAgregar" id="btnBubbleArandano" name="nombreProducto" value="Bubble Arandano" onclick="agregarBubbles(this)">AGREGAR</button>
+                        </label>
+                        <!-- Bubble Sandia -->
+                        <label for="btnBubbleSandia" class="caja">
+                            <p class="nombreProductos">Bubble Sandia</p>
+                            <div class="imagenPedido BubbleSandia"></div>
+                            <button class="btnAgregar" id="btnBubbleSandia" name="nombreProducto" value="Bubble Sandia" onclick="agregarBubbles(this)">AGREGAR</button>
+                        </label>
+                        <!-- Bubble Melocoton -->
+                        <label for="btnBubbleMelocoton" class="caja">
+                            <p class="nombreProductos">Bubble Melocoton</p>
+                            <div class="imagenPedido BubbleMelocoton"></div>
+                            <button class="btnAgregar" id="btnBubbleMelocoton" name="nombreProducto" value="Bubble Melocoton" onclick="agregarBubbles(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarBubbles" onclick="cerrarVentana('dialog_ventanaBubbles')">Cancelar</button>
             </div>
         </dialog>
 

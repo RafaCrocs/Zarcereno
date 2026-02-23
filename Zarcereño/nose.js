@@ -11,9 +11,13 @@ function mostrarVentana() {
 function cerrarVentana(dialogId) {
     const dialog = document.getElementById(dialogId);
     const lechesDialog = document.getElementById('dialog_ventanaLeches');
+    const bubblesDialog = document.getElementById('dialog_ventanaBubbles');
+    
     if (dialog) {
         dialog.style.display = 'none';
         lechesDialog.style.display = 'none';
+        bubblesDialog.style.display = 'none';
+        bubblesDialog.close();
         lechesDialog.close();
         dialog.close();
     }
@@ -102,8 +106,34 @@ let historial = [];
 let bebida;
 let leche;
 let saborizante;
+const tiemposTextoAgregar = new WeakMap();
+
+function mostrarAgregadoTemporalmente(botonPulsado) {
+    if (!botonPulsado) {
+        return;
+    }
+
+    const textoOriginal = botonPulsado.dataset.textoOriginal || botonPulsado.innerText;
+    botonPulsado.dataset.textoOriginal = textoOriginal;
+    botonPulsado.innerText = 'AGREGADO';
+    botonPulsado.style.backgroundColor = 'rgb(77, 136, 77)';
+
+    const tiempoAnterior = tiemposTextoAgregar.get(botonPulsado);
+    if (tiempoAnterior) {
+        clearTimeout(tiempoAnterior);
+    }
+
+    const nuevoTiempo = setTimeout(() => {
+        botonPulsado.innerText = botonPulsado.dataset.textoOriginal || 'AGREGAR';
+        botonPulsado.style.backgroundColor = 'rgb(121, 184, 121)';
+        tiemposTextoAgregar.delete(botonPulsado);
+    }, 2000);
+
+    tiemposTextoAgregar.set(botonPulsado, nuevoTiempo);
+}
 
 function agregar(botonPulsado) {
+    mostrarAgregadoTemporalmente(botonPulsado);
     bebida = botonPulsado.value;
     abrirLeches();
 }
@@ -116,6 +146,7 @@ function abrirTamaños() {
 
 function elegirTamaño(botonPulsado) {
     bebida += ' ' + botonPulsado.value;
+    if(bebida.includes('Americano')) agregarCarrito();
     const ventanaTamaño = document.getElementById('dialog_ventanaTamaños');
     ventanaTamaño.style.display = 'none';
     ventanaTamaño.close();
@@ -123,7 +154,9 @@ function elegirTamaño(botonPulsado) {
 
 
 function abrirLeches() {
-    if(bebida.includes('Granizado') || bebida.includes('Jugo Verde') || bebida.includes('Refresher')|| bebida.includes('MilkShake')) {
+    if(bebida.includes('Granizado') || bebida.includes('Jugo Verde') || bebida.includes('Refresher') ||
+        bebida.includes('MilkShake') || bebida.includes('Americano') || bebida.includes('Espresso') ||
+        bebida.includes('Affogato') || bebida === 'Cold Brew'){
         leche = '';
         abrirSaborizantes();
         return;
@@ -144,11 +177,15 @@ function agregarLeche(botonPulsado) {
 
 
 function abrirSaborizantes() {
-    if(bebida.includes(',') || bebida.includes('Taro') || bebida.includes('Americano')) {
+    if(bebida.includes(',') || bebida.includes('Taro') || bebida.includes('Americano') ||
+        bebida.includes('Espresso') || bebida.includes('Matcha') || bebida.includes('Cortado') ||
+        bebida.includes('Macchiato') || bebida.includes('Affogato') || bebida.includes('Mokaccino') ||
+        bebida === 'Cold Brew' || bebida === 'Flat White' || bebida.includes('Chocolate Caliente')) 
+        {
         saborizante = '';
-        agregarCarrito();
+        if(!bebida.includes('Americano'))agregarCarrito();
         return;
-    }
+        }
     else if(bebida.includes('Jugo Verde') || bebida.includes('Refresher') || bebida.includes('Granizado') || bebida.includes('MilkShake')) {
         return;
     }
@@ -189,11 +226,10 @@ function abrirVentanaRefresher() {
 
 //de
 function agregarRefresher(botonPulsado) {
-    saborizante = botonPulsado.value;
+    bebida += ' ' + botonPulsado.value;
     const ventanaRefresher = document.getElementById('dialog_ventanaRefresher');
     ventanaRefresher.style.display = 'none';
     ventanaRefresher.close();
-    agregarCarrito();
 }
 
 function abrirVentanaSaborizantesNaturales() {
@@ -207,6 +243,20 @@ function agregarSaborizanteNatural(botonPulsado) {
     const ventanaSaborizantesNaturales = document.getElementById('dialog_ventanaSaborizantesNaturales');
     ventanaSaborizantesNaturales.style.display = 'none';
     ventanaSaborizantesNaturales.close();
+    agregarCarrito();
+}
+
+function abrirVentanaBubbles() {
+    const ventanaBubbles = document.getElementById('dialog_ventanaBubbles');
+    ventanaBubbles.style.display = 'block';
+    ventanaBubbles.showModal();
+}
+
+function agregarBubbles(botonPulsado) {
+    saborizante = botonPulsado.value;
+    const ventanaBubbles = document.getElementById('dialog_ventanaBubbles');
+    ventanaBubbles.style.display = 'none';
+    ventanaBubbles.close();
     agregarCarrito();
 }
 
@@ -378,3 +428,5 @@ window.agregarCantidad = agregarCantidad;
 window.agregarCantidadDesdeBoton = agregarCantidadDesdeBoton;
 window.restarCantidad = restarCantidad;
 window.restarCantidadDesdeBoton = restarCantidadDesdeBoton;
+window.abrirVentanaBubbles = abrirVentanaBubbles;
+window.agregarBubbles = agregarBubbles;

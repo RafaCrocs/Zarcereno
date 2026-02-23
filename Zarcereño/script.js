@@ -1,8 +1,38 @@
 import { database } from "./firebase-config.js";
-import { ref, onChildAdded, remove, onChildRemoved } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { ref, onChildAdded, remove, onChildRemoved, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 // Contador para colores secuenciales
 let contadorPedidos = 0;
+const pedidosMostrados = new Set();
+const audioNotificacion = new Audio('../Notificacion.mp3');
+audioNotificacion.preload = 'auto';
+let audioHabilitado = false;
+
+function habilitarAudioNotificaciones() {
+    if (audioHabilitado) return;
+
+    audioNotificacion.muted = true;
+    const reproduccion = audioNotificacion.play();
+
+    if (reproduccion) {
+        reproduccion.then(() => {
+            audioNotificacion.pause();
+            audioNotificacion.currentTime = 0;
+            audioNotificacion.muted = false;
+            audioHabilitado = true;
+        }).catch(() => {
+            audioNotificacion.muted = false;
+        });
+    }
+}
+
+function reproducirNotificacion() {
+    audioNotificacion.currentTime = 0;
+    const reproduccion = audioNotificacion.play();
+    if (reproduccion) {
+        reproduccion.catch(() => {});
+    }
+}
 
 // Bloquear el botón de retroceso
 history.pushState(null, null, location.href);
@@ -10,20 +40,34 @@ window.onpopstate = function () {
     history.go(1);
 };
 
-function iniciarEscuchaPedidos() {
+async function iniciarEscuchaPedidos() {
     const pedidosRef = ref(database, 'pedidos');
+
+    const snapshotInicial = await get(pedidosRef);
+    snapshotInicial.forEach((snapshot) => {
+        const pedido = snapshot.val();
+        const pedidoId = snapshot.key;
+
+        if (pedido && pedido.items && !pedidosMostrados.has(pedidoId)) {
+            pedidosMostrados.add(pedidoId);
+            crearTablaPedido(pedido, pedidoId);
+        }
+    });
     
     onChildAdded(pedidosRef, (snapshot) => {
         const pedido = snapshot.val();
         const pedidoId = snapshot.key;
         
-        if (pedido && pedido.items) {
+        if (pedido && pedido.items && !pedidosMostrados.has(pedidoId)) {
+            pedidosMostrados.add(pedidoId);
             crearTablaPedido(pedido, pedidoId);
+            reproducirNotificacion();
         }
     });
 
     onChildRemoved(pedidosRef, (snapshot) => {
         const pedidoId = snapshot.key;
+        pedidosMostrados.delete(pedidoId);
         const elementoPedido = document.querySelector(`.nuevoPedido[data-id="${pedidoId}"]`);
         if (elementoPedido) {
             elementoPedido.remove();
@@ -47,7 +91,7 @@ function crearTablaPedido(pedido, id) {
     // Encabezado del pedido
     let htmlContent = `
         <div class="pedido-header">
-            <h2>${pedido.cliente || ''} - ${hora}</h2>
+            <h2>${pedido.cliente || ''} - Pedido #${contadorPedidos}</h2>
             <h3 style="color: red;">${pedido.tipo || ''}</h3>
         </div>
         <table class="tablaPedido" border="1">
@@ -101,4 +145,7 @@ window.completarPedido = function(boton) {
 
 // Cargar al inicio
 document.addEventListener('DOMContentLoaded', iniciarEscuchaPedidos);
+document.addEventListener('click', habilitarAudioNotificaciones, { passive: true });
+document.addEventListener('keydown', habilitarAudioNotificaciones);
+document.addEventListener('touchstart', habilitarAudioNotificaciones, { passive: true });
 
