@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=1.1.7">
-    <script type="module" src="nose.js?v=1.0.8" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.1.8">
+    <script type="module" src="nose.js?v=1.0.9" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
@@ -337,7 +337,7 @@
             <label for="btnJugoVerde" class="caja">
                 <p class="nombreProductos">Jugo Verde</p>
                 <div class="imagenPedido JugoVerde"></div>
-                <button class="btnAgregar" id="btnJugoVerde" value="Jugo Verde" onclick="agregar(this), abrirVentanaSaborizantesNaturales()">AGREGAR</button>
+                <button class="btnAgregar" id="btnJugoVerde" value="Jugo Verde" onclick="agregar(this),abrirVentanaSaborizantesNaturales(),abrirVentanaOpcionesJugoVerde()">AGREGAR</button>
             </label>
             <!-- Granizado -->
             <label for="btnGranizado" class="caja">
@@ -470,6 +470,12 @@
                 <p>Saborizante Natural</p>
                 <section class="section">
                     <div class="dialog_productos">
+                        <!-- Ninguno -->
+                        <label for="btnSinSaborizanteNatural" class="caja">
+                            <p class="nombreProductos">Ninguno</p>
+                            <div class="imagenPedido SinSaborizanteNatural"></div>
+                            <button class="btnAgregar" id="btnSinSaborizanteNatural" name="nombreProducto" value="" onclick="agregarSaborizanteNatural(this)">AGREGAR</button>
+                        </label>
                         <!-- Piña -->
                         <label for="btnSaborizanteNaturalPiña" class="caja">
                             <p class="nombreProductos">Piña</p>
@@ -633,6 +639,37 @@
                 </section>
                 <button class="btnSalirDialog" id="btnCerrarHelados" onclick="cerrarVentana('dialog_ventanaHelados')">Cancelar</button>
             </div>
+        </dialog>
+
+        <dialog class="dialog" id="dialog_ventanaOpcionesJugoVerde">
+            <div class="dialog_content">
+                <p>Opciones para Jugo Verde</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- En Agua -->
+                        <label for="btnAgua" class="caja">
+                            <p class="nombreProductos">En Agua</p>
+                            <div class="imagenPedido Agua"></div>
+                            <button class="btnAgregar" id="btnAgua" name="nombreProducto" value="En Agua" onclick="agregarOpcionesJugoVerde(this)">AGREGAR</button>
+                        </label>
+                        <!-- En limonada -->
+                        <label for="btnLimonada" class="caja">
+                            <p class="nombreProductos">En Limonada</p>
+                            <div class="imagenPedido Limonada"></div>
+                            <button class="btnAgregar" id="btnLimonada" name="nombreProducto" value="En Limonada" onclick="agregarOpcionesJugoVerde(this)">AGREGAR</button>
+                        </label>
+                        <!-- En Jugo de Naranja -->
+                        <label for="btnJugoNaranja" class="caja">
+                            <p class="nombreProductos">En Jugo de Naranja</p>
+                            <div class="imagenPedido Naranja"></div>
+                            <button class="btnAgregar" id="btnJugoNaranja" name="nombreProducto" value="En Naranja" onclick="agregarOpcionesJugoVerde(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarOpcionesJugoVerde" onclick="cerrarVentana('dialog_ventanaOpcionesJugoVerde')">Cancelar</button>
+            </div>
+        </dialog>
+
         </dialog>
         <!-- Sección de Postres -->
         <h2 class="tituloSection" id="Futuro">Futuro</h2>

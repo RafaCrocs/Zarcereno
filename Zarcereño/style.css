@@ -363,6 +363,12 @@ body{
 .Grande{
     background-image: url('../Imagenes/VasoGrande.png');
 }
+.ManzanaVerde{
+    background-image: url('../Imagenes/ManzanaVerde.png');
+}
+.Limonada{
+    background-image: url('../Imagenes/Limon.png');
+}
 
 
 

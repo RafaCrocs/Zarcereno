@@ -260,6 +260,19 @@ function agregarBubbles(botonPulsado) {
     agregarCarrito();
 }
 
+function abrirVentanaOpcionesJugoVerde() {
+    const ventanaOpcionesJugoVerde = document.getElementById('dialog_ventanaOpcionesJugoVerde');
+    ventanaOpcionesJugoVerde.style.display = 'block';
+    ventanaOpcionesJugoVerde.showModal();
+}
+
+function agregarOpcionesJugoVerde(botonPulsado) {
+    bebida += ' ' + botonPulsado.value;
+    const ventanaOpcionesJugoVerde = document.getElementById('dialog_ventanaOpcionesJugoVerde');
+    ventanaOpcionesJugoVerde.style.display = 'none';
+    ventanaOpcionesJugoVerde.close();
+}
+
 function agregarCarrito() {
     let producto = {
         cantidad: 1,
@@ -430,3 +443,5 @@ window.restarCantidad = restarCantidad;
 window.restarCantidadDesdeBoton = restarCantidadDesdeBoton;
 window.abrirVentanaBubbles = abrirVentanaBubbles;
 window.agregarBubbles = agregarBubbles;
+window.abrirVentanaOpcionesJugoVerde = abrirVentanaOpcionesJugoVerde;
+window.agregarOpcionesJugoVerde = agregarOpcionesJugoVerde;
