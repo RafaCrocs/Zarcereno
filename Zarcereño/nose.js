@@ -1,6 +1,43 @@
 import { database } from "./firebase-config.js";
 import { ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
+//PRODUCTOS NO DISPONIBLES POR HELADERIA
+const productosNoDisponibles = {
+    'SanRamon': [
+        'btnCrepa',
+    ],
+    'Orotina': [
+        '',
+        '',
+        ''
+    ], 
+    'Liberia': [
+        'btnFuturo'
+    ],
+};
+
+function aplicarFiltrosSucursal() {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const sucursal = urlParams.get('sucursal') || 'SanRamon';
+
+    const listaOcultar = productosNoDisponibles[sucursal];
+
+    if (listaOcultar && listaOcultar.length > 0) {
+        listaOcultar.forEach(idBoton => {
+            const boton = document.getElementById(idBoton);
+            if (boton) {
+                const contenedor = boton.closest('.caja');
+                if (contenedor) {
+                    contenedor.style.display = 'none';
+                }
+            }
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', aplicarFiltrosSucursal);
+
 function mostrarVentana() {
     crearTabla();
     const ventana = document.getElementById('dialog_ventanaConfirmacion');
@@ -31,6 +68,10 @@ function confirmarEnvio() {
         btn.innerText = 'Enviando...';
     }
 
+    // Obtener sucursal de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sucursal = urlParams.get('sucursal') || 'Zarcero'; // Por defecto Zarcero si no hay param
+
     const nombreCliente = document.getElementById('nombreCliente').value || "";
     const inputNota = document.getElementById('notaPedido');
     const notaPedido = inputNota ? inputNota.value : "";
@@ -54,6 +95,7 @@ function confirmarEnvio() {
     set(nuevoPedidoRef, {
         cliente: nombreCliente,
         nota: notaPedido,
+        sucursal: sucursal,
         tipo: tipoPedido,
         items: carrito,
         fecha: new Date().toISOString()
@@ -62,6 +104,7 @@ function confirmarEnvio() {
         historial.push({
             cliente: nombreCliente,
             nota: notaPedido,
+            sucursal: sucursal,
             tipo: tipoPedido,
             items: carrito,
             fecha: new Date().toISOString()

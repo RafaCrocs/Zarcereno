@@ -8,6 +8,25 @@ const audioNotificacion = new Audio('../Notificacion.mp3');
 audioNotificacion.preload = 'auto';
 let audioHabilitado = false;
 
+// Configuración Automática de Sucursal
+// Prioridad: 1. URL Param, 2. LocalStorage, 3. Default 'Zarcero'
+const urlParams = new URLSearchParams(window.location.search);
+const sucursalUrl = urlParams.get('sucursal');
+
+if (sucursalUrl) {
+    localStorage.setItem('sucursal_config', sucursalUrl);
+}
+
+const sucursalActual = localStorage.getItem('sucursal_config') || 'Zarcero';
+
+// Actualizar el título para mostrar la sucursal actual
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header');
+    if (header) {
+        header.innerText = `Pedidos Recibidos - ${sucursalActual}`;
+    }
+});
+
 function habilitarAudioNotificaciones() {
     if (audioHabilitado) return;
 
@@ -48,6 +67,10 @@ async function iniciarEscuchaPedidos() {
         const pedido = snapshot.val();
         const pedidoId = snapshot.key;
 
+        // Filtrar automáticamente por sucursal
+        const pedidoSucursal = pedido.sucursal || 'Zarcero'; // Compatibilidad
+        if (pedidoSucursal !== sucursalActual) return;
+
         if (pedido && pedido.items && !pedidosMostrados.has(pedidoId)) {
             pedidosMostrados.add(pedidoId);
             crearTablaPedido(pedido, pedidoId);
@@ -57,6 +80,12 @@ async function iniciarEscuchaPedidos() {
     onChildAdded(pedidosRef, (snapshot) => {
         const pedido = snapshot.val();
         const pedidoId = snapshot.key;
+        
+        // Filtrar automáticamente por sucursal
+        const pedidoSucursal = pedido.sucursal || 'Zarcero'; // Compatibilidad
+        if (pedidoSucursal !== sucursalActual) {
+            return; // Ignorar pedidos de otras sucursales
+        }
         
         if (pedido && pedido.items && !pedidosMostrados.has(pedidoId)) {
             pedidosMostrados.add(pedidoId);
