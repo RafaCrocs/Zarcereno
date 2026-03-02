@@ -20,7 +20,12 @@ const bebidasConFlujoPropio = [
     'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake'
 ];
 
-// Helper: devuelve true si la bebida contiene alguna de las palabras de la lista
+// Bebidas que necesitan selección de tamaño
+const bebidasConTamaño = [
+    'Americano', 'Cappuchino', 'Mokaccino', 'Latte', 'Chocolate Caliente', 'Iced Americano'
+];
+
+
 function incluyeAlguna(nombreBebida, lista) {
     return lista.some(nombre => nombreBebida.includes(nombre));
 }
@@ -38,7 +43,7 @@ const productosNoDisponibles = {
         ''
     ], 
     'Liberia': [
-        'btnAmericano',
+        '',
     ],
 };
 
@@ -205,7 +210,11 @@ function mostrarAgregadoTemporalmente(botonPulsado) {
 function agregar(botonPulsado) {
     mostrarAgregadoTemporalmente(botonPulsado);
     bebida = botonPulsado.value;
-    abrirLeches();
+    if (incluyeAlguna(bebida, bebidasConTamaño)) {
+        abrirTamaños();
+    } else {
+        abrirLeches();
+    }
 }
 
 function abrirTamaños() {
@@ -216,16 +225,15 @@ function abrirTamaños() {
 
 function elegirTamaño(botonPulsado) {
     bebida += ' ' + botonPulsado.value;
-    if(bebida.includes('Americano')) agregarCarrito();
     const ventanaTamaño = document.getElementById('dialog_ventanaTamaños');
     ventanaTamaño.style.display = 'none';
     ventanaTamaño.close();
+    abrirLeches();
 }
 
 
 function abrirLeches() {
     if (incluyeAlguna(bebida, bebidasSinLeche)) {
-        leche = '';
         abrirSaborizantes();
         return;
     }
@@ -248,9 +256,7 @@ function abrirSaborizantes() {
     if (incluyeAlguna(bebida, bebidasConFlujoPropio)) return;
 
     if (bebida.includes(',') || incluyeAlguna(bebida, bebidasSinSaborizante)) {
-        saborizante = '';
-
-        if (bebida !== 'Americano') agregarCarrito();
+        agregarCarrito();
         return;
     }
 
@@ -276,7 +282,6 @@ function abrirHelados() {
 
 function agregarHelado(botonPulsado) {
     bebida += ' ' + botonPulsado.value;
-    saborizante = '';
     const ventanaHelados = document.getElementById('dialog_ventanaHelados');
     ventanaHelados.style.display = 'none';
     ventanaHelados.close();
@@ -342,11 +347,14 @@ function agregarCarrito() {
     let producto = {
         cantidad: 1,
         bebida: bebida,
-        leche: leche,
-        saborizante: saborizante,
+        leche: leche || '',
+        saborizante: saborizante || '',
         nota: ''
     };
     carrito.push(producto);
+    bebida = undefined;
+    leche = undefined;
+    saborizante = undefined;
 }
 
 function agregarBatido() {
