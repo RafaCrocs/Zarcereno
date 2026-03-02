@@ -4,7 +4,7 @@ import { ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/fireba
 //PRODUCTOS NO DISPONIBLES POR HELADERIA
 const productosNoDisponibles = {
     'SanRamon': [
-        'btnCrepa',
+        '',
     ],
     'Orotina': [
         '',
@@ -12,7 +12,7 @@ const productosNoDisponibles = {
         ''
     ], 
     'Liberia': [
-        'btnFuturo'
+        'btnAmericano',
     ],
 };
 
@@ -70,7 +70,7 @@ function confirmarEnvio() {
 
     // Obtener sucursal de la URL
     const urlParams = new URLSearchParams(window.location.search);
-    const sucursal = urlParams.get('sucursal') || 'Zarcero'; // Por defecto Zarcero si no hay param
+    const sucursal = urlParams.get('sucursal') || 'SanRamon'; // Por defecto SanRamon
 
     const nombreCliente = document.getElementById('nombreCliente').value || "";
     const inputNota = document.getElementById('notaPedido');
@@ -226,7 +226,7 @@ function abrirSaborizantes() {
         bebida === 'Cold Brew' || bebida === 'Flat White' || bebida.includes('Chocolate Caliente')) 
         {
         saborizante = '';
-        if(!bebida.includes('Americano'))agregarCarrito();
+        if(bebida !== 'Americano') agregarCarrito();
         return;
         }
     else if(bebida.includes('Jugo Verde') || bebida.includes('Refresher') || bebida.includes('Granizado') || bebida.includes('MilkShake')) {

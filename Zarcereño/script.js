@@ -8,8 +8,7 @@ const audioNotificacion = new Audio('../Notificacion.mp3');
 audioNotificacion.preload = 'auto';
 let audioHabilitado = false;
 
-// Configuración Automática de Sucursal
-// Prioridad: 1. URL Param, 2. LocalStorage, 3. Default 'Zarcero'
+
 const urlParams = new URLSearchParams(window.location.search);
 const sucursalUrl = urlParams.get('sucursal');
 
@@ -17,7 +16,7 @@ if (sucursalUrl) {
     localStorage.setItem('sucursal_config', sucursalUrl);
 }
 
-const sucursalActual = localStorage.getItem('sucursal_config') || 'Zarcero';
+const sucursalActual = localStorage.getItem('sucursal_config') || 'SanRamon';
 
 // Actualizar el título para mostrar la sucursal actual
 document.addEventListener('DOMContentLoaded', () => {
@@ -68,7 +67,7 @@ async function iniciarEscuchaPedidos() {
         const pedidoId = snapshot.key;
 
         // Filtrar automáticamente por sucursal
-        const pedidoSucursal = pedido.sucursal || 'Zarcero'; // Compatibilidad
+        const pedidoSucursal = pedido.sucursal || 'SanRamon'; // Compatibilidad
         if (pedidoSucursal !== sucursalActual) return;
 
         if (pedido && pedido.items && !pedidosMostrados.has(pedidoId)) {
