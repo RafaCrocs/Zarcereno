@@ -81,9 +81,9 @@ async function iniciarEscuchaPedidos() {
         const pedidoId = snapshot.key;
         
         // Filtrar automáticamente por sucursal
-        const pedidoSucursal = pedido.sucursal || 'Zarcero'; // Compatibilidad
+        const pedidoSucursal = pedido.sucursal || 'SanRamon'; // Compatibilidad
         if (pedidoSucursal !== sucursalActual) {
-            return; // Ignorar pedidos de otras sucursales
+            return;
         }
         
         if (pedido && pedido.items && !pedidosMostrados.has(pedidoId)) {
@@ -106,9 +106,7 @@ async function iniciarEscuchaPedidos() {
 function crearTablaPedido(pedido, id) {
     let colores = ['rgb(111, 194, 111)', 'rgb(255, 255, 153)', 'rgb(153, 204, 255)'];
     const contenedor = document.getElementById('contenedorPedidos');
-    const hora = pedido.fecha
-            ? new Date(pedido.fecha).toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit' })
-            : '';
+
     // Crear contenedor para este pedido
     const divPedido = document.createElement('div');
     divPedido.className = 'nuevoPedido';
@@ -129,6 +127,7 @@ function crearTablaPedido(pedido, id) {
                     <th>Bebida</th>
                     <th>Leche</th>
                     <th>Saborizante</th>
+                    <th>Nota</th>
                 </tr>
             </thead>
             <tbody>
@@ -144,6 +143,7 @@ function crearTablaPedido(pedido, id) {
                 <td>${item.bebida || '-'}</td>
                 <td>${item.leche || '-'}</td>
                 <td>${item.saborizante || '-'}</td>
+                <td>${item.nota || '-'}</td>
             </tr>
         `;
     });

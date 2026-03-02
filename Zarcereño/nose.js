@@ -1,6 +1,32 @@
 import { database } from "./firebase-config.js";
 import { ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
+
+// Bebidas que NO necesitan selección de leche
+const bebidasSinLeche = [
+    'Granizado', 'Jugo Verde', 'Refresher', 'MilkShake',
+    'Americano', 'Espresso', 'Affogato', 'Cold Brew', 'Iced Americano'
+];
+
+// Bebidas que NO necesitan saborizante (se agregan directo al carrito)
+const bebidasSinSaborizante = [
+    'Taro', 'Americano', 'Espresso', 'Matcha', 'Cortado',
+    'Macchiato', 'Affogato', 'Mokaccino', 'Cold Brew',
+    'Flat White', 'Chocolate Caliente', 'Iced Americano'
+];
+
+// Bebidas con flujo propio (tienen sus propias ventanas, no usan la de saborizantes)
+const bebidasConFlujoPropio = [
+    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake'
+];
+
+// Helper: devuelve true si la bebida contiene alguna de las palabras de la lista
+function incluyeAlguna(nombreBebida, lista) {
+    return lista.some(nombre => nombreBebida.includes(nombre));
+}
+
+// ────────────────────────────────────────────────────────────
+
 //PRODUCTOS NO DISPONIBLES POR HELADERIA
 const productosNoDisponibles = {
     'SanRamon': [
@@ -110,7 +136,8 @@ function confirmarEnvio() {
             fecha: new Date().toISOString()
         });
         limpiarCarrito();
-        document.getElementById('nombreCliente').value = ''; 
+        document.getElementById('nombreCliente').value = '';
+        document.getElementById('notaPedido').value = '';
         if (inputNota) inputNota.value = '';
         if(tipoPedidoElement) tipoPedidoElement.checked = false;
         cerrarVentana('dialog_ventanaConfirmacion');
@@ -197,9 +224,7 @@ function elegirTamaño(botonPulsado) {
 
 
 function abrirLeches() {
-    if(bebida.includes('Granizado') || bebida.includes('Jugo Verde') || bebida.includes('Refresher') ||
-        bebida.includes('MilkShake') || bebida.includes('Americano') || bebida.includes('Espresso') ||
-        bebida.includes('Affogato') || bebida === 'Cold Brew'){
+    if (incluyeAlguna(bebida, bebidasSinLeche)) {
         leche = '';
         abrirSaborizantes();
         return;
@@ -220,18 +245,15 @@ function agregarLeche(botonPulsado) {
 
 
 function abrirSaborizantes() {
-    if(bebida.includes(',') || bebida.includes('Taro') || bebida.includes('Americano') ||
-        bebida.includes('Espresso') || bebida.includes('Matcha') || bebida.includes('Cortado') ||
-        bebida.includes('Macchiato') || bebida.includes('Affogato') || bebida.includes('Mokaccino') ||
-        bebida === 'Cold Brew' || bebida === 'Flat White' || bebida.includes('Chocolate Caliente')) 
-        {
+    if (incluyeAlguna(bebida, bebidasConFlujoPropio)) return;
+
+    if (bebida.includes(',') || incluyeAlguna(bebida, bebidasSinSaborizante)) {
         saborizante = '';
-        if(bebida !== 'Americano') agregarCarrito();
-        return;
-        }
-    else if(bebida.includes('Jugo Verde') || bebida.includes('Refresher') || bebida.includes('Granizado') || bebida.includes('MilkShake')) {
+
+        if (bebida !== 'Americano') agregarCarrito();
         return;
     }
+
     const saborizantes = document.getElementById('dialog_ventanaSaborizantes');
     saborizantes.style.display = 'block';
     saborizantes.showModal();
@@ -321,7 +343,8 @@ function agregarCarrito() {
         cantidad: 1,
         bebida: bebida,
         leche: leche,
-        saborizante: saborizante
+        saborizante: saborizante,
+        nota: ''
     };
     carrito.push(producto);
 }
@@ -358,9 +381,11 @@ function crearTabla() {
                 <td>${carrito[i].bebida}</td>
                 <td>${carrito[i].leche}</td>
                 <td>${carrito[i].saborizante}</td>
+                <td><input type="text" placeholder="Nota (opcional)" class="inputNota" value="${carrito[i].nota || ''}" onchange="actualizarNotaDesdeInput(this)"></td>
                 <td><button onclick="eliminarProducto(${i})" id="btnEliminar">Eliminar</button></td>
             </tr>`;}
         Indice = carrito.length;
+        console.log(carrito);
     
     document.getElementById('listaEnTabla').insertAdjacentHTML('beforeend', htmlTabla);
     
@@ -430,6 +455,14 @@ function restarCantidadDesdeBoton(boton) {
     restarCantidad(carrito[indice]);
 }
 
+function actualizarNotaDesdeInput(input) {
+    const fila = input.closest('tr');
+    if (!fila) return;
+    const indice = Number(fila.dataset.indice);
+    if (!Number.isInteger(indice) || !carrito[indice]) return;
+    carrito[indice].nota = input.value;
+}
+
 function mostrarHistorial() {
     const historial = document.getElementById('dialog_ventanaHistorial');
     historial.style.display = 'block';
@@ -484,6 +517,7 @@ window.agregarCantidad = agregarCantidad;
 window.agregarCantidadDesdeBoton = agregarCantidadDesdeBoton;
 window.restarCantidad = restarCantidad;
 window.restarCantidadDesdeBoton = restarCantidadDesdeBoton;
+window.actualizarNotaDesdeInput = actualizarNotaDesdeInput;
 window.abrirVentanaBubbles = abrirVentanaBubbles;
 window.agregarBubbles = agregarBubbles;
 window.abrirVentanaOpcionesJugoVerde = abrirVentanaOpcionesJugoVerde;
