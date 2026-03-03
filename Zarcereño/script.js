@@ -82,6 +82,7 @@ async function iniciarEscuchaPedidos() {
         
         // Filtrar automáticamente por sucursal
         const pedidoSucursal = pedido.sucursal || 'SanRamon'; // Compatibilidad
+
         if (pedidoSucursal !== sucursalActual) {
             return;
         }
@@ -115,10 +116,12 @@ function crearTablaPedido(pedido, id) {
     contadorPedidos++;
 
     // Encabezado del pedido
+    const origenColor = '#2980b9';
     let htmlContent = `
         <div class="pedido-header">
             <h2>${pedido.cliente || ''} - Pedido #${contadorPedidos}</h2>
             <h3 style="color: red;">${pedido.tipo || ''}</h3>
+            <h3 style="color: ${origenColor}; font-size: 1.3em;"> ${pedido.origen ? '---- ' + pedido.origen + ' ----' : ''} </h3>
         </div>
         <table class="tablaPedido" border="1">
             <thead class="tablaEncabezado" id="tablaEncabezado" style="background-color: ${colorAleatorio};">

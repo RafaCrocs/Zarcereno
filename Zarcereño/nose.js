@@ -50,7 +50,7 @@ const productosNoDisponibles = {
 function aplicarFiltrosSucursal() {
 
     const urlParams = new URLSearchParams(window.location.search);
-    const sucursal = urlParams.get('sucursal') || 'SanRamon';
+    const sucursal = urlParams.get('sucursal') || 'SanRamon'; // Por defecto SanRamon
 
     const listaOcultar = productosNoDisponibles[sucursal];
 
@@ -99,9 +99,10 @@ function confirmarEnvio() {
         btn.innerText = 'Enviando...';
     }
 
-    // Obtener sucursal de la URL
+    // Obtener sucursal y origen de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const sucursal = urlParams.get('sucursal') || 'SanRamon'; // Por defecto SanRamon
+    const origen = urlParams.get('origen') || ''; // Por defecto nada
 
     const nombreCliente = document.getElementById('nombreCliente').value || "";
     const inputNota = document.getElementById('notaPedido');
@@ -127,6 +128,7 @@ function confirmarEnvio() {
         cliente: nombreCliente,
         nota: notaPedido,
         sucursal: sucursal,
+        origen: origen,
         tipo: tipoPedido,
         items: carrito,
         fecha: new Date().toISOString()
@@ -136,6 +138,7 @@ function confirmarEnvio() {
             cliente: nombreCliente,
             nota: notaPedido,
             sucursal: sucursal,
+            origen: origen,
             tipo: tipoPedido,
             items: carrito,
             fecha: new Date().toISOString()

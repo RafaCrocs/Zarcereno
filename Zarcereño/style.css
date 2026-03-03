@@ -487,6 +487,14 @@ th, td{
     font-size: large;
 }
 
+.inputNota{
+    padding: 10px;
+    width: 100%;
+    display: block;
+    font-size: 1.2rem;
+    border: 1px solid #333;
+}
+
 
 .inputNombre{
     padding: 10px;
