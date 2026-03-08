@@ -17,7 +17,7 @@ const bebidasSinSaborizante = [
 
 // Bebidas con flujo propio (tienen sus propias ventanas, no usan la de saborizantes)
 const bebidasConFlujoPropio = [
-    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake'
+    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake', 'Iced Chocolate'
 ];
 
 // Bebidas que necesitan selección de tamaño
