@@ -169,10 +169,8 @@ function crearTablaPedido(pedido, id) {
 window.completarPedido = async function(boton) {
     const contenedorPedido = boton.closest('.nuevoPedido');
     const pedidoId = contenedorPedido.dataset.id;
-    debugger
     const pedidoRef = ref(database, 'pedidos/' + pedidoId);
     const snapshot = await get(pedidoRef);
-    debugger
     if (snapshot.exists()) {
         const pedidoData = snapshot.val();
         pedidoData.completadoEn = new Date().toISOString();

@@ -123,6 +123,7 @@ function confirmarEnvio() {
 
     const pedidosRef = ref(database, 'pedidos');
     const nuevoPedidoRef = push(pedidosRef);
+    numeroPedido ++;
     
     set(nuevoPedidoRef, {
         cliente: nombreCliente,
@@ -131,7 +132,8 @@ function confirmarEnvio() {
         origen: origen,
         tipo: tipoPedido,
         items: carrito,
-        fecha: new Date().toISOString()
+        fecha: new Date().toISOString(),
+        numeroPedido: numeroPedido
     })
     .then(() => {
         historial.push({
@@ -184,6 +186,7 @@ let historial = [];
 let bebida;
 let leche;
 let saborizante;
+let numeroPedido = 0;
 const tiemposTextoAgregar = new WeakMap();
 
 function mostrarAgregadoTemporalmente(botonPulsado) {
