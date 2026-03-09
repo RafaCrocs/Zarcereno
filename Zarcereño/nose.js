@@ -5,19 +5,19 @@ import { ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/fireba
 // Bebidas que NO necesitan selección de leche
 const bebidasSinLeche = [
     'Granizado', 'Jugo Verde', 'Refresher', 'MilkShake',
-    'Americano', 'Espresso', 'Affogato', 'Cold Brew', 'Iced Americano'
+    'Americano', 'Espresso', 'Affogato', 'Cold Brew', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split'
 ];
 
 // Bebidas que NO necesitan saborizante (se agregan directo al carrito)
 const bebidasSinSaborizante = [
     'Taro', 'Americano', 'Espresso', 'Matcha', 'Cortado',
     'Macchiato', 'Affogato', 'Mokaccino', 'Cold Brew',
-    'Flat White', 'Chocolate Caliente', 'Iced Americano'
+    'Flat White', 'Chocolate Caliente', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split'
 ];
 
 // Bebidas con flujo propio (tienen sus propias ventanas, no usan la de saborizantes)
 const bebidasConFlujoPropio = [
-    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake', 'Iced Chocolate'
+    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake', 'Iced Chocolate', 'Ensalada de Frutas', 'Banana Split'
 ];
 
 // Bebidas que necesitan selección de tamaño

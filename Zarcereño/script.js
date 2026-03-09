@@ -1,5 +1,5 @@
 import { database } from "./firebase-config.js";
-import { ref, onChildAdded, remove, onChildRemoved, get, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { ref, onChildAdded, remove, onChildRemoved, get, set, runTransaction } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 // Contador para colores secuenciales
 let contadorPedidos = 0;
@@ -50,6 +50,14 @@ function reproducirNotificacion() {
     if (reproduccion) {
         reproduccion.catch(() => {});
     }
+}
+
+function obtenerClaveDiaLocal() {
+    const fecha = new Date();
+    const anio = fecha.getFullYear();
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    return `${anio}-${mes}-${dia}`;
 }
 
 // Bloquear el botón de retroceso
@@ -173,7 +181,29 @@ window.completarPedido = async function(boton) {
     const snapshot = await get(pedidoRef);
     if (snapshot.exists()) {
         const pedidoData = snapshot.val();
+        const numeroProductosVendidos = Array.isArray(pedidoData.items)
+            ? pedidoData.items.reduce((total, item) => {
+                const cantidad = Number(item?.cantidad);
+                return total + (Number.isFinite(cantidad) && cantidad > 0 ? cantidad : 1);
+            }, 0)
+            : 0;
+
         pedidoData.completadoEn = new Date().toISOString();
+        pedidoData.numeroProductosVendidos = numeroProductosVendidos;
+
+        const diaClave = obtenerClaveDiaLocal();
+        const acumuladoPath = `estadisticas_ventas/${sucursalActual}/${diaClave}`;
+        const acumuladoRef = ref(database, acumuladoPath);
+
+        await runTransaction(acumuladoRef, (actual) => {
+            const estadoActual = actual || {};
+            return {
+                productosVendidos: (Number(estadoActual.productosVendidos) || 0) + numeroProductosVendidos,
+                pedidosCompletados: (Number(estadoActual.pedidosCompletados) || 0) + 1,
+                ultimaActualizacion: new Date().toISOString()
+            };
+        });
+
         if(sucursalActual === 'SanRamon') {
             const completadoRef = ref(database, 'pedidos_completados_SanRamon/' + pedidoId);
             await set(completadoRef, pedidoData);

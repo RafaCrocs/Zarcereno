@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=1.2.0">
-    <script type="module" src="nose.js?v=1.1.2" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.2.1">
+    <script type="module" src="nose.js?v=1.1.4" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
@@ -15,7 +15,7 @@
             <li class="nav_item"><a class="item_link"href="#Cafes">Cafes</a></li>
             <li class="nav_item"><a class="item_link"href="#Batidos">Batidos</a></li>
             <li class="nav_item"><a class="item_link"href="#Frios">Frios</a></li>
-            <li class="nav_item"><a class="item_link"href="#Proximamente">Proximamente</a></li>
+            <li class="nav_item"><a class="item_link"href="#Especiales">Especiales</a></li>
             <button class="nav_button" id="carrito" onclick="mostrarVentana()">Carrito</button>
         </ul>
         
@@ -671,14 +671,20 @@
         </dialog>
 
         </dialog>
-        <!-- Sección de Postres -->
-        <h2 class="tituloSection" id="Proximamente">Proximamente</h2>
-        <section class="section" id="sectionProximamente">
-            <!-- Proximamente -->
-            <label for="Proximamente" class="caja">
-                <p class="nombreProductos">Proximamente</p>
-                <div class="imagenPedido Proximamente"></div>
-                <button class="btnAgregar" id="btnMilkShakeFresa" value="Proximamente" onclick="agregarCarrito(this), abrirLeches()">AGREGAR</button>
+        <!-- Sección Esperciales -->
+        <h2 class="tituloSection" id="Especiales">Especiales</h2>
+        <section class="section" id="sectionEspeciales">
+            <!-- Ensalada de Frutas -->
+            <label for="btnEnsaladaFrutas" class="caja">
+                <p class="nombreProductos">Ensalada de Frutas</p>
+                <div class="imagenPedido EnsaladaFrutas"></div>
+                <button class="btnAgregar" id="btnEnsaladaFrutas" value="Ensalada de Frutas" onclick="agregar(this), abrirHelados()">AGREGAR</button>
+            </label>
+            <!-- Banana Split -->
+            <label for="btnBananaSplit" class="caja">
+                <p class="nombreProductos">Banana Split</p>
+                <div class="imagenPedido BananaSplit"></div>
+                <button class="btnAgregar" id="btnBananaSplit" value="Banana Split" onclick="agregar(this), abrirHelados()">AGREGAR</button>
             </label>
         </section>
 
