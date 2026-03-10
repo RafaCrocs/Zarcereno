@@ -5,19 +5,19 @@ import { ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/fireba
 // Bebidas que NO necesitan selección de leche
 const bebidasSinLeche = [
     'Granizado', 'Jugo Verde', 'Refresher', 'MilkShake',
-    'Americano', 'Espresso', 'Affogato', 'Cold Brew', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split'
+    'Americano', 'Espresso', 'Affogato', 'Cold Brew', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split', 'Crepa'
 ];
 
 // Bebidas que NO necesitan saborizante (se agregan directo al carrito)
 const bebidasSinSaborizante = [
     'Taro', 'Americano', 'Espresso', 'Matcha', 'Cortado',
     'Macchiato', 'Affogato', 'Mokaccino', 'Cold Brew',
-    'Flat White', 'Chocolate Caliente', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split'
+    'Flat White', 'Chocolate Caliente', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split', 'Crepa'
 ];
 
 // Bebidas con flujo propio (tienen sus propias ventanas, no usan la de saborizantes)
 const bebidasConFlujoPropio = [
-    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake', 'Iced Chocolate', 'Ensalada de Frutas', 'Banana Split'
+    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake', 'Iced Chocolate', 'Ensalada de Frutas', 'Banana Split', 'Crepa'
 ];
 
 // Bebidas que necesitan selección de tamaño
@@ -27,7 +27,7 @@ const bebidasConTamaño = [
 
 
 function incluyeAlguna(nombreBebida, lista) {
-    return lista.some(nombre => nombreBebida.includes(nombre));
+    return lista.some(nombre => nombreBebida === nombre);
 }
 
 // ────────────────────────────────────────────────────────────
@@ -35,11 +35,14 @@ function incluyeAlguna(nombreBebida, lista) {
 //PRODUCTOS NO DISPONIBLES POR HELADERIA
 const productosNoDisponibles = {
     'SanRamon': [
-        '',
+        'btnBatidoLeche',
+        'btnBatidoAgua',
+        'btnCrepa',
+        'btnLatteOrotina'
     ],
     'Orotina': [
-        '',
-        '',
+        'btnLatte',
+        'btnNuez',
         ''
     ], 
     'Liberia': [
@@ -379,6 +382,47 @@ function agregarBatido() {
     abrirLeches();
 }
 
+function abrirVentanaNumerosBatidosLeche() {
+    const ventana = document.getElementById('dialog_ventanaNumerosBatidosLeche');
+    ventana.style.display = 'block';
+    ventana.showModal();
+}
+
+function abrirVentanaNumerosBatidosAgua() {
+    const ventana = document.getElementById('dialog_ventanaNumerosBatidosAgua');
+    ventana.style.display = 'block';
+    ventana.showModal();
+}
+
+function agregarNumeroBatidoLeche(botonPulsado) {
+    bebida = `Batido en Leche ${botonPulsado.value}`;
+    const ventana = document.getElementById('dialog_ventanaNumerosBatidosLeche');
+    ventana.style.display = 'none';
+    ventana.close();
+    agregarCarrito();
+}
+
+function agregarNumeroBatidoAgua(botonPulsado) {
+    bebida = `Batido en Agua ${botonPulsado.value}`;
+    const ventana = document.getElementById('dialog_ventanaNumerosBatidosAgua');
+    ventana.style.display = 'none';
+    ventana.close();
+    agregarCarrito();
+}
+
+function abrirVentanaNumerosCrepa() {
+    const ventana = document.getElementById('dialog_ventanaNumerosCrepa');
+    ventana.style.display = 'block';
+    ventana.showModal();
+}
+
+function agregarNumeroCrepa(botonPulsado) {
+    bebida = `Crepa ${botonPulsado.value}`;
+    const ventana = document.getElementById('dialog_ventanaNumerosCrepa');
+    ventana.style.display = 'none';
+    ventana.close();
+}
+
 
 
 
@@ -518,6 +562,12 @@ window.abrirHelados = abrirHelados;
 window.agregarHelado = agregarHelado;
 window.agregarCarrito = agregarCarrito;
 window.agregarBatido = agregarBatido;
+window.abrirVentanaNumerosBatidosLeche = abrirVentanaNumerosBatidosLeche;
+window.abrirVentanaNumerosBatidosAgua = abrirVentanaNumerosBatidosAgua;
+window.agregarNumeroBatidoLeche = agregarNumeroBatidoLeche;
+window.agregarNumeroBatidoAgua = agregarNumeroBatidoAgua;
+window.abrirVentanaNumerosCrepa = abrirVentanaNumerosCrepa;
+window.agregarNumeroCrepa = agregarNumeroCrepa;
 window.eliminarProducto = eliminarProducto;
 window.crearTabla = crearTabla;
 window.limpiarCarrito = limpiarCarrito;

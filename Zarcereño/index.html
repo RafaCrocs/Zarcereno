@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=1.2.1">
-    <script type="module" src="nose.js?v=1.1.4" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.2.2">
+    <script type="module" src="nose.js?v=1.1.5" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
@@ -50,6 +50,12 @@
                 <p class="nombreProductos">Latte</p>
                 <div class="imagenPedido Latte"></div>
                 <button class="btnAgregar" id="btnLatte" name="nombreProducto" value="Latte" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Latte Orotina -->
+            <label for="btnLatteOrotina" class="caja">
+                <p class="nombreProductos">Latte</p>
+                <div class="imagenPedido Latte"></div>
+                <button class="btnAgregar" id="btnLatteOrotina" name="nombreProducto" value="Latte " onclick="agregar(this)">AGREGAR</button>
             </label>
             <!-- Chocolate Caliente -->
             <label for="btnChocolateCaliente" class="caja">
@@ -165,6 +171,18 @@
         <h2 class="tituloSection" id="Batidos">Batidos</h2>
         <form>
             <section class="section" id="sectionBatidos">
+                <!-- Batido en Leche -->
+                <label for="btnBatidoLeche" class="caja">
+                    <p class="nombreProductos">En Leche</p>
+                    <div class="imagenPedido BatidoLeche"></div>
+                    <button type="button" class="btnAgregar" id="btnBatidoLeche" value="Batido en Leche" onclick="abrirVentanaNumerosBatidosLeche()">AGREGAR</button>
+                </label>
+                <!-- Batido en Agua -->
+                <label for="btnBatidoAgua" class="caja">
+                    <p class="nombreProductos">En Agua</p>
+                    <div class="imagenPedido BatidoAgua"></div>
+                    <button type="button" class="btnAgregar" id="btnBatidoAgua" value="Batido en Agua" onclick="abrirVentanaNumerosBatidosAgua()">AGREGAR</button>
+                </label>
                 <!-- Batido de Piña -->
                 <label class="caja">
                     <p class="nombreProductos">Piña</p>
@@ -252,6 +270,72 @@
             </section>
             <input  type="button"class="btnAgregar btnAgregarBatidos" onclick="agregarBatido()" value="AGREGAR BATIDO"></input>
         </form>
+
+        <dialog class="dialog" id="dialog_ventanaNumerosBatidosLeche">
+            <div class="dialog_content">
+                <p class="tituloDialog">Batido en Leche</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <label for="btnNumeroBatidoLeche1" class="caja">
+                            <p class="nombreProductos">1</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoLeche1" value="1" onclick="agregarNumeroBatidoLeche(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoLeche2" class="caja">
+                            <p class="nombreProductos">2</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoLeche2" value="2" onclick="agregarNumeroBatidoLeche(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoLeche3" class="caja">
+                            <p class="nombreProductos">3</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoLeche3" value="3" onclick="agregarNumeroBatidoLeche(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoLeche4" class="caja">
+                            <p class="nombreProductos">4</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoLeche4" value="4" onclick="agregarNumeroBatidoLeche(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoLeche5" class="caja">
+                            <p class="nombreProductos">5</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoLeche5" value="5" onclick="agregarNumeroBatidoLeche(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarNumerosBatidosLeche" onclick="cerrarVentana('dialog_ventanaNumerosBatidosLeche')">Cancelar</button>
+            </div>
+        </dialog>
+
+        <dialog class="dialog" id="dialog_ventanaNumerosBatidosAgua">
+            <div class="dialog_content">
+                <p class="tituloDialog">Batido en Agua</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <label for="btnNumeroBatidoAgua1" class="caja">
+                            <p class="nombreProductos">1</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoAgua1" value="1" onclick="agregarNumeroBatidoAgua(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoAgua2" class="caja">
+                            <p class="nombreProductos">2</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoAgua2" value="2" onclick="agregarNumeroBatidoAgua(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoAgua3" class="caja">
+                            <p class="nombreProductos">3</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoAgua3" value="3" onclick="agregarNumeroBatidoAgua(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoAgua4" class="caja">
+                            <p class="nombreProductos">4</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoAgua4" value="4" onclick="agregarNumeroBatidoAgua(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoAgua5" class="caja">
+                            <p class="nombreProductos">5</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoAgua5" value="5" onclick="agregarNumeroBatidoAgua(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroBatidoAgua6" class="caja">
+                            <p class="nombreProductos">6</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroBatidoAgua6" value="6" onclick="agregarNumeroBatidoAgua(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarNumerosBatidosAgua" onclick="cerrarVentana('dialog_ventanaNumerosBatidosAgua')">Cancelar</button>
+            </div>
+        </dialog>
         <!-- Sección de Frios -->
         <h2 class="tituloSection" id="Frios">Frios</h2>
         <section class="section" id="sectionMilkShake">
@@ -686,7 +770,40 @@
                 <div class="imagenPedido BananaSplit"></div>
                 <button class="btnAgregar" id="btnBananaSplit" value="Banana Split" onclick="agregar(this), abrirHelados()">AGREGAR</button>
             </label>
+            <!-- Crepa -->
+            <label for="btnCrepa" class="caja">
+                <p class="nombreProductos">Crepa</p>
+                <div class="imagenPedido Crepa"></div>
+                <button type="button" class="btnAgregar" id="btnCrepa" value="Crepa" onclick="abrirHelados(), abrirVentanaNumerosCrepa()">AGREGAR</button>
+            </label>
         </section>
+
+        <dialog class="dialog" id="dialog_ventanaNumerosCrepa">
+            <div class="dialog_content">
+                <p class="tituloDialog">Crepa</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <label for="btnNumeroCrepa1" class="caja">
+                            <p class="nombreProductos">1</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroCrepa1" value="1" onclick="agregarNumeroCrepa(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroCrepa2" class="caja">
+                            <p class="nombreProductos">2</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroCrepa2" value="2" onclick="agregarNumeroCrepa(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroCrepa3" class="caja">
+                            <p class="nombreProductos">3</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroCrepa3" value="3" onclick="agregarNumeroCrepa(this)">AGREGAR</button>
+                        </label>
+                        <label for="btnNumeroCrepa4" class="caja">
+                            <p class="nombreProductos">4</p>
+                            <button type="button" class="btnAgregar" id="btnNumeroCrepa4" value="4" onclick="agregarNumeroCrepa(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarNumerosCrepa" onclick="cerrarVentana('dialog_ventanaNumerosCrepa')">Cancelar</button>
+            </div>
+        </dialog>
 
         <dialog class="dialog" id="dialog_ventanaHistorial">
             <div class="dialog_content">
