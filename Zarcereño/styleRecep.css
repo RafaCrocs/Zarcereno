@@ -16,7 +16,7 @@
 .nuevoPedido {
     border: 1px solid #ccc;
     padding: 5px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .pedido-header{
@@ -26,11 +26,17 @@ h3{
     margin-top: 10px;
 }
 
+.infoVersion{
+    position: absolute;
+    color: white;
+    font-size: 1rem;
+}
+
 
 .contenedor-pedidos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 50px;
+    gap: 30px;
     padding: 20px;
     text-align: center;
 }
@@ -46,9 +52,14 @@ h3{
 }
 
 th, td {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     font-size: 1.5rem;
+}
+
+.encabezadoNota {
+    width: auto;
+    overflow: auto;
 }
 
 .notaPedido {

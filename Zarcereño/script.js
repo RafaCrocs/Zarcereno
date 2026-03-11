@@ -138,7 +138,7 @@ function crearTablaPedido(pedido, id) {
                     <th>Bebida</th>
                     <th>Leche</th>
                     <th>Saborizante</th>
-                    <th>Nota</th>
+                    <th class="encabezadoNota">Nota</th>
                 </tr>
             </thead>
             <tbody>

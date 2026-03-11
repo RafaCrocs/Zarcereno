@@ -5,19 +5,19 @@ import { ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/fireba
 // Bebidas que NO necesitan selección de leche
 const bebidasSinLeche = [
     'Granizado', 'Jugo Verde', 'Refresher', 'MilkShake',
-    'Americano', 'Espresso', 'Affogato', 'Cold Brew', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split', 'Crepa'
+    'Americano Pequeño', 'Americano Grande', 'Espresso', 'Espresso Doble', 'Affogato', 'Cold Brew', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split', 'Crepa', 'Sundae', 'Limonada Regular', 'Limonada de Fresa'
 ];
 
 // Bebidas que NO necesitan saborizante (se agregan directo al carrito)
 const bebidasSinSaborizante = [
-    'Taro', 'Americano', 'Espresso', 'Matcha', 'Cortado',
-    'Macchiato', 'Affogato', 'Mokaccino', 'Cold Brew',
-    'Flat White', 'Chocolate Caliente', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split', 'Crepa'
+    'Taro', 'Americano Pequeño', 'Americano Grande', 'Espresso', 'Espresso Doble', 'Matcha', 'Cortado',
+    'Macchiato', 'Affogato', 'Mokaccino Pequeño', 'Mokaccino Grande', 'Cold Brew',
+    'Flat White', 'Chocolate Caliente Pequeño', 'Chocolate Caliente Grande', 'Iced Americano Pequeño', 'Iced Americano Grande', 'Ensalada de Frutas', 'Banana Split', 'Crepa', 'Sundae', 'Limonada Regular', 'Limonada de Fresa'
 ];
 
 // Bebidas con flujo propio (tienen sus propias ventanas, no usan la de saborizantes)
 const bebidasConFlujoPropio = [
-    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake', 'Iced Chocolate', 'Ensalada de Frutas', 'Banana Split', 'Crepa'
+    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake', 'Iced Chocolate', 'Ensalada de Frutas', 'Banana Split', 'Crepa', 'Sundae'
 ];
 
 // Bebidas que necesitan selección de tamaño
@@ -27,6 +27,7 @@ const bebidasConTamaño = [
 
 
 function incluyeAlguna(nombreBebida, lista) {
+    debugger
     return lista.some(nombre => nombreBebida === nombre);
 }
 
@@ -38,7 +39,10 @@ const productosNoDisponibles = {
         'btnBatidoLeche',
         'btnBatidoAgua',
         'btnCrepa',
-        'btnLatteOrotina'
+        'btnLatteOrotina',
+        'btnSundae',
+        'btnLimonadaRegular',
+        'btnLimonadaFresa'
     ],
     'Orotina': [
         'btnLatte',
@@ -83,13 +87,19 @@ function cerrarVentana(dialogId) {
     const dialog = document.getElementById(dialogId);
     const lechesDialog = document.getElementById('dialog_ventanaLeches');
     const bubblesDialog = document.getElementById('dialog_ventanaBubbles');
+    const saborizantesDialog = document.getElementById('dialog_ventanaSaborizantes');
+    const heladosDialog = document.getElementById('dialog_ventanaHelados');
     
     if (dialog) {
         dialog.style.display = 'none';
         lechesDialog.style.display = 'none';
         bubblesDialog.style.display = 'none';
+        saborizantesDialog.style.display = 'none';
+        heladosDialog.style.display = 'none';
         bubblesDialog.close();
         lechesDialog.close();
+        saborizantesDialog.close();
+        heladosDialog.close();
         dialog.close();
     }
 }
@@ -294,7 +304,7 @@ function agregarHelado(botonPulsado) {
     const ventanaHelados = document.getElementById('dialog_ventanaHelados');
     ventanaHelados.style.display = 'none';
     ventanaHelados.close();
-    agregarCarrito();
+    if(!bebida.includes('Sundae')) agregarCarrito();
 }
 
 function abrirVentanaRefresher() {
@@ -303,7 +313,7 @@ function abrirVentanaRefresher() {
     ventanaRefresher.showModal();
 }
 
-//de
+
 function agregarRefresher(botonPulsado) {
     bebida += ' ' + botonPulsado.value;
     const ventanaRefresher = document.getElementById('dialog_ventanaRefresher');
@@ -423,8 +433,19 @@ function agregarNumeroCrepa(botonPulsado) {
     ventana.close();
 }
 
+function abrirVentanaSiropes() {
+    const ventana = document.getElementById('dialog_ventanaSiropes');
+    ventana.style.display = 'block';
+    ventana.showModal();
+}
 
-
+function agregarSiropes(botonPulsado) {
+    saborizante = botonPulsado.value;
+    const ventana = document.getElementById('dialog_ventanaSiropes');
+    ventana.style.display = 'none';
+    ventana.close();
+    agregarCarrito();
+}
 
 let Indice = 0;
 
@@ -586,3 +607,5 @@ window.abrirVentanaBubbles = abrirVentanaBubbles;
 window.agregarBubbles = agregarBubbles;
 window.abrirVentanaOpcionesJugoVerde = abrirVentanaOpcionesJugoVerde;
 window.agregarOpcionesJugoVerde = agregarOpcionesJugoVerde;
+window.abrirVentanaSiropes = abrirVentanaSiropes;
+window.agregarSiropes = agregarSiropes;

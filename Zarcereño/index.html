@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=1.2.2">
-    <script type="module" src="nose.js?v=1.1.5" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.2.5">
+    <script type="module" src="nose.js?v=1.1.7" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
 <body>
     <nav class="navBar">
+        <p class="infoVersion">v=1.0.1</p>
         <ul class="nav_list">
             <li class="nav_item"><a class="item_link"href="#Cafes">Cafes</a></li>
             <li class="nav_item"><a class="item_link"href="#Batidos">Batidos</a></li>
@@ -441,7 +442,18 @@
                 <div class="imagenPedido Taro"></div>
                 <button class="btnAgregar" id="btnTaro" value="Taro" onclick="agregar(this)">AGREGAR</button>
             </label>
-
+            <!-- Limonada -->
+            <label for="btnLimonadaRegular" class="caja">
+                <p class="nombreProductos">Limonada</p>
+                <div class="imagenPedido LimonadaRegular"></div>
+                <button class="btnAgregar" id="btnLimonadaRegular" value="Limonada Regular" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Limonada de Fresa -->
+            <label for="btnLimonadaFresa" class="caja">
+                <p class="nombreProductos">Limonada Fresa</p>
+                <div class="imagenPedido LimonadaFresa"></div>
+                <button class="btnAgregar" id="btnLimonadaFresa" value="Limonada de Fresa" onclick="agregar(this)">AGREGAR</button>
+            </label>
         </section>
 
         <dialog class="dialog" id="dialog_ventanaRefresher">
@@ -633,91 +645,91 @@
                         <label for="btnSinHelado" class="caja">
                             <p class="nombreProductos">Ninguno</p>
                             <div class="imagenPedido SinHelado"></div>
-                            <button class="btnAgregar" id="btnSinHelado" name="nombreProducto" value="" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnSinHelado" name="nombreProducto" value="Sin Helado" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado de Vainilla -->
                         <label for="btnHeladoVainilla" class="caja">
                             <p class="nombreProductos">Vainilla</p>
                             <div class="imagenPedido HeladoVainilla"></div>
-                            <button class="btnAgregar" id="btnHeladoVainilla" name="nombreProducto" value="Vainilla" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoVainilla" name="nombreProducto" value="Helado Vainilla" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado de Chocolate -->
                         <label for="btnHeladoChocolate" class="caja">
                             <p class="nombreProductos">Chocolate</p>
                             <div class="imagenPedido HeladoChocolate"></div>
-                            <button class="btnAgregar" id="btnHeladoChocolate" name="nombreProducto" value="Chocolate" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoChocolate" name="nombreProducto" value="Helado Chocolate" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado de Fresa -->
                         <label for="btnHeladoFresa" class="caja">
                             <p class="nombreProductos">Fresa</p>
                             <div class="imagenPedido HeladoFresa"></div>
-                            <button class="btnAgregar" id="btnHeladoFresa" name="nombreProducto" value="Fresa" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoFresa" name="nombreProducto" value="Helado Fresa" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado de Chocochips -->
                         <label for="btnHeladoChocochips" class="caja">
                             <p class="nombreProductos">Chocochips</p>
                             <div class="imagenPedido HeladoChocochips"></div>
-                            <button class="btnAgregar" id="btnHeladoChocochips" name="nombreProducto" value="Chocochips" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoChocochips" name="nombreProducto" value="Helado Chocochips" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado de Galleta -->
                         <label for="btnHeladoGalleta" class="caja">
                             <p class="nombreProductos">Galleta</p>
                             <div class="imagenPedido HeladoGalleta"></div>
-                            <button class="btnAgregar" id="btnHeladoGalleta" name="nombreProducto" value="Galleta" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoGalleta" name="nombreProducto" value="Helado Galleta" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Ron con Frutas -->
                         <label for="btnHeladoRonConFrutas" class="caja">
                             <p class="nombreProductos">Ron con Frutas</p>
                             <div class="imagenPedido HeladoRonConFrutas"></div>
-                            <button class="btnAgregar" id="btnHeladoRonConFrutas" name="nombreProducto" value="Ron con Frutas" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoRonConFrutas" name="nombreProducto" value="Helado Ron con Frutas" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Caramelo Vainilla -->
                         <label for="btnHeladoCarameloVainilla" class="caja">
                             <p class="nombreProductos">Caramelo Vainilla</p>
                             <div class="imagenPedido HeladoCarameloVainilla"></div>
-                            <button class="btnAgregar" id="btnHeladoCarameloVainilla" name="nombreProducto" value="Caramelo Vainilla" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoCarameloVainilla" name="nombreProducto" value="Helado Caramelo Vainilla" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Ron con Pasas -->
                         <label for="btnHeladoRonConPasas" class="caja">
                             <p class="nombreProductos">Ron con Pasas</p>
                             <div class="imagenPedido HeladoRonConPasas"></div>
-                            <button class="btnAgregar" id="btnHeladoRonConPasas" name="nombreProducto" value="Ron con Pasas" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoRonConPasas" name="nombreProducto" value="Helado Ron con Pasas" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Napolitano -->
                         <label for="btnHeladoNapolitano" class="caja">
                             <p class="nombreProductos">Napolitano</p>
                             <div class="imagenPedido HeladoNapolitano"></div>
-                            <button class="btnAgregar" id="btnHeladoNapolitano" name="nombreProducto" value="Napolitano" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoNapolitano" name="nombreProducto" value="Helado Napolitano" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Coco -->
                         <label for="btnHeladoCoco" class="caja">
                             <p class="nombreProductos">Coco</p>
                             <div class="imagenPedido HeladoCoco"></div>
-                            <button class="btnAgregar" id="btnHeladoCoco" name="nombreProducto" value="Coco" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoCoco" name="nombreProducto" value="Helado Coco" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Fresa Nieve -->
                         <label for="btnHeladoFresaNieve" class="caja">
                             <p class="nombreProductos">Fresa Nieve</p>
                             <div class="imagenPedido HeladoFresaNieve"></div>
-                            <button class="btnAgregar" id="btnHeladoFresaNieve" name="nombreProducto" value="Fresa Nieve" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoFresaNieve" name="nombreProducto" value="Helado Fresa Nieve" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Naranja Piña -->
                         <label for="btnHeladoNaranjaPina" class="caja">
                             <p class="nombreProductos">Naranja Piña</p>
                             <div class="imagenPedido HeladoNaranjaPina"></div>
-                            <button class="btnAgregar" id="btnHeladoNaranjaPina" name="nombreProducto" value="Naranja Piña" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoNaranjaPina" name="nombreProducto" value="Helado Naranja Piña" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Combinado -->
                         <label for="btnHeladoCombinado" class="caja">
                             <p class="nombreProductos">Combinado</p>
                             <div class="imagenPedido HeladoCombinado"></div>
-                            <button class="btnAgregar" id="btnHeladoCombinado" name="nombreProducto" value="Combinado" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoCombinado" name="nombreProducto" value="Helado Combinado" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>
                         <!-- Helado Chicle -->
                         <label for="btnHeladoChicle" class="caja">
                             <p class="nombreProductos">Chicle</p>
                             <div class="imagenPedido HeladoChicle"></div>
-                            <button class="btnAgregar" id="btnHeladoChicle" name="nombreProducto" value="Chicle" onclick="agregarHelado(this)">AGREGAR</button>
+                            <button class="btnAgregar" id="btnHeladoChicle" name="nombreProducto" value="Helado Chicle" onclick="agregarHelado(this)">AGREGAR</button>
                         </label>    
                     </div>
                 </section>
@@ -776,6 +788,12 @@
                 <div class="imagenPedido Crepa"></div>
                 <button type="button" class="btnAgregar" id="btnCrepa" value="Crepa" onclick="abrirHelados(), abrirVentanaNumerosCrepa()">AGREGAR</button>
             </label>
+            <!-- Sundae -->
+            <label for="btnSundae" class="caja">
+                <p class="nombreProductos">Sundae</p>
+                <div class="imagenPedido Sundae"></div>
+                <button class="btnAgregar" id="btnSundae" value="Sundae" onclick="agregar(this),abrirVentanaSiropes(), abrirHelados()">AGREGAR</button>
+            </label>
         </section>
 
         <dialog class="dialog" id="dialog_ventanaNumerosCrepa">
@@ -802,6 +820,41 @@
                     </div>
                 </section>
                 <button class="btnSalirDialog" id="btnCerrarNumerosCrepa" onclick="cerrarVentana('dialog_ventanaNumerosCrepa')">Cancelar</button>
+            </div>
+        </dialog>
+
+        <dialog class="dialog" id="dialog_ventanaSiropes">
+            <div class="dialog_content">
+                <p>Sirope</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Ninguno -->
+                        <label for="btnSinSirope" class="caja">
+                            <p class="nombreProductos">Ninguno</p>
+                            <div class="imagenPedido SinSirope"></div>
+                            <button class="btnAgregar" id="btnSinSirope" name="nombreProducto" value="" onclick="agregarSiropes(this)">AGREGAR</button>
+                        </label>
+                        <!-- Sirope de Fresa -->
+                        <label for="btnSiropeFresa" class="caja">
+                            <p class="nombreProductos">Fresa</p>
+                            <div class="imagenPedido SiropeFresa"></div>
+                            <button class="btnAgregar" id="btnSiropeFresa" name="nombreProducto" value="Sirope de Fresa" onclick="agregarSiropes(this)">AGREGAR</button>
+                        </label>
+                        <!-- Sirope de Caramelo -->
+                        <label for="btnSiropeCaramelo" class="caja">
+                            <p class="nombreProductos">Caramelo</p>
+                            <div class="imagenPedido SiropeCaramelo"></div>
+                            <button class="btnAgregar" id="btnSiropeCaramelo" name="nombreProducto" value="Sirope de Caramelo" onclick="agregarSiropes(this)">AGREGAR</button>
+                        </label>
+                        <!-- Sirope de Chocolate -->
+                        <label for="btnSiropeChocolate" class="caja">
+                            <p class="nombreProductos">Chocolate</p>
+                            <div class="imagenPedido SiropeChocolate"></div>
+                            <button class="btnAgregar" id="btnSiropeChocolate" name="nombreProducto" value="Sirope de Chocolate" onclick="agregarSiropes(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarSiropes" onclick="cerrarVentana('dialog_ventanaSiropes')">Cancelar</button>
             </div>
         </dialog>
 

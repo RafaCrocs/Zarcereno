@@ -44,6 +44,14 @@ body{
     transform: translate(-50%, -50%);
 }
 
+.infoVersion{
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
 .nav_item{
     padding: 14px 5px;
     font-size: 1.1rem;
@@ -376,6 +384,24 @@ body{
 }
 .Crepa{
     background-image: url('../Imagenes/Crepa.png');
+}
+.Sundae{
+    background-image: url('../Imagenes/Sundae.png');
+}
+.LimonadaRegular{
+    background-image: url('../Imagenes/Limonada.png');
+}
+.LimonadaFresa{
+    background-image: url('../Imagenes/LimonadaFresa.png');
+}
+.SiropeFresa{
+    background-image: url('../Imagenes/SiropeFresa.png');
+}
+.SiropeCaramelo{
+    background-image: url('../Imagenes/SiropeCaramelo.png');
+}
+.SiropeChocolate{
+    background-image: url('../Imagenes/SiropeChocolate.png');
 }
 
 
