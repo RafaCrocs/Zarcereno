@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=1.2.5">
-    <script type="module" src="nose.js?v=1.1.7" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.2.6">
+    <script type="module" src="nose.js?v=1.1.8" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
 <body>
     <nav class="navBar">
         <p class="infoVersion">v=1.0.1</p>
+        <p id="sucursalActual"></p>
         <ul class="nav_list">
             <li class="nav_item"><a class="item_link"href="#Cafes">Cafes</a></li>
             <li class="nav_item"><a class="item_link"href="#Batidos">Batidos</a></li>
@@ -93,6 +94,12 @@
                 <p class="nombreProductos">Flat White</p>
                 <div class="imagenPedido FlatWhite"></div>
                 <button class="btnAgregar" id="btnFlatWhite" name="nombreProducto" value="Flat White" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Matcha Caliente -->
+            <label for="btnMatchaCaliente" class="caja">
+                <p class="nombreProductos">Matcha Caliente</p>
+                <div class="imagenPedido MatchaCaliente"></div>
+                <button class="btnAgregar" id="btnMatchaCaliente" name="nombreProducto" value="Matcha Caliente" onclick="agregar(this)">AGREGAR</button>
             </label>
         </section>
 
@@ -453,6 +460,12 @@
                 <p class="nombreProductos">Limonada Fresa</p>
                 <div class="imagenPedido LimonadaFresa"></div>
                 <button class="btnAgregar" id="btnLimonadaFresa" value="Limonada de Fresa" onclick="agregar(this)">AGREGAR</button>
+            </label>
+            <!-- Piña Colada -->
+            <label for="btnPiñaColada" class="caja">
+                <p class="nombreProductos">Piña Colada</p>
+                <div class="imagenPedido PiñaColada"></div>
+                <button class="btnAgregar" id="btnPiñaColada" value="Piña Colada" onclick="agregar(this)">AGREGAR</button>
             </label>
         </section>
 

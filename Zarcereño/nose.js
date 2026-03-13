@@ -5,14 +5,19 @@ import { ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/fireba
 // Bebidas que NO necesitan selección de leche
 const bebidasSinLeche = [
     'Granizado', 'Jugo Verde', 'Refresher', 'MilkShake',
-    'Americano Pequeño', 'Americano Grande', 'Espresso', 'Espresso Doble', 'Affogato', 'Cold Brew', 'Iced Americano', 'Ensalada de Frutas', 'Banana Split', 'Crepa', 'Sundae', 'Limonada Regular', 'Limonada de Fresa'
+    'Americano Pequeño', 'Americano Grande', 'Espresso',
+    'Espresso Doble', 'Affogato', 'Cold Brew', 'Iced Americano',
+    'Ensalada de Frutas', 'Banana Split', 'Crepa', 'Sundae', 'Limonada Regular',
+    'Limonada de Fresa', 'Matcha Caliente'
 ];
 
 // Bebidas que NO necesitan saborizante (se agregan directo al carrito)
 const bebidasSinSaborizante = [
     'Taro', 'Americano Pequeño', 'Americano Grande', 'Espresso', 'Espresso Doble', 'Matcha', 'Cortado',
     'Macchiato', 'Affogato', 'Mokaccino Pequeño', 'Mokaccino Grande', 'Cold Brew',
-    'Flat White', 'Chocolate Caliente Pequeño', 'Chocolate Caliente Grande', 'Iced Americano Pequeño', 'Iced Americano Grande', 'Ensalada de Frutas', 'Banana Split', 'Crepa', 'Sundae', 'Limonada Regular', 'Limonada de Fresa'
+    'Flat White', 'Chocolate Caliente Pequeño', 'Chocolate Caliente Grande', 'Iced Americano Pequeño',
+    'Iced Americano Grande', 'Ensalada de Frutas', 'Banana Split', 'Crepa', 'Sundae', 'Limonada Regular',
+    'Limonada de Fresa', 'Matcha Caliente', 'Piña Colada'
 ];
 
 // Bebidas con flujo propio (tienen sus propias ventanas, no usan la de saborizantes)
@@ -42,7 +47,8 @@ const productosNoDisponibles = {
         'btnLatteOrotina',
         'btnSundae',
         'btnLimonadaRegular',
-        'btnLimonadaFresa'
+        'btnLimonadaFresa',
+        'btnMatchaCaliente',
     ],
     'Orotina': [
         'btnLatte',
@@ -54,10 +60,16 @@ const productosNoDisponibles = {
     ],
 };
 
+
 function aplicarFiltrosSucursal() {
 
     const urlParams = new URLSearchParams(window.location.search);
-    const sucursal = urlParams.get('sucursal') || 'SanRamon'; // Por defecto SanRamon
+    const sucursal = urlParams.get('sucursal') || 'Sucursal No Encontrada';
+    const sucursalActual = document.getElementById('sucursalActual');
+    if (sucursalActual) {
+        sucursalActual.innerText = sucursal;
+    }
+
 
     const listaOcultar = productosNoDisponibles[sucursal];
 

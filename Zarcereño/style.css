@@ -19,6 +19,14 @@ body{
     padding-top: var(--nav-height);
 }
 
+#sucursalActual{
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    left: 0px;
+    top: 20px;
+}
+
 .navBar{
     background-color: #333;
     width: 100%;
@@ -403,7 +411,12 @@ body{
 .SiropeChocolate{
     background-image: url('../Imagenes/SiropeChocolate.png');
 }
-
+.MatchaCaliente{
+    background-image: url('../Imagenes/MatchaCaliente.png');
+}
+.PiñaColada{
+    background-image: url('../Imagenes/PiñaColada.png');
+}
 
 
 

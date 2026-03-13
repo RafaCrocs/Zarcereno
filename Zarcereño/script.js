@@ -211,8 +211,8 @@ window.completarPedido = async function(boton) {
             const completadoRef = ref(database, 'pedidos_completados_Orotina/' + pedidoId);
             await set(completadoRef, pedidoData);
         }
-        else {
-            const completadoRef = ref(database, 'pedidos_completados_NoseDonde/' + pedidoId);
+        else if(sucursalActual === 'Liberia') {
+            const completadoRef = ref(database, 'pedidos_completados_Liberia/' + pedidoId);
             await set(completadoRef, pedidoData);
         }
     }
