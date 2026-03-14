@@ -22,7 +22,9 @@ const bebidasSinSaborizante = [
 
 // Bebidas con flujo propio (tienen sus propias ventanas, no usan la de saborizantes)
 const bebidasConFlujoPropio = [
-    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake', 'Iced Chocolate', 'Ensalada de Frutas', 'Banana Split', 'Crepa', 'Sundae'
+    'Jugo Verde', 'Refresher', 'Granizado', 'MilkShake',
+    'Iced Chocolate', 'Ensalada de Frutas', 'Banana Split',
+    'Crepa', 'Sundae', 'Taro'
 ];
 
 // Bebidas que necesitan selección de tamaño
@@ -101,6 +103,7 @@ function cerrarVentana(dialogId) {
     const bubblesDialog = document.getElementById('dialog_ventanaBubbles');
     const saborizantesDialog = document.getElementById('dialog_ventanaSaborizantes');
     const heladosDialog = document.getElementById('dialog_ventanaHelados');
+    const toppingTaroDialog = document.getElementById('dialog_ventanaToppingTaro');
     
     if (dialog) {
         dialog.style.display = 'none';
@@ -108,10 +111,12 @@ function cerrarVentana(dialogId) {
         bubblesDialog.style.display = 'none';
         saborizantesDialog.style.display = 'none';
         heladosDialog.style.display = 'none';
+        toppingTaroDialog.style.display = 'none';
         bubblesDialog.close();
         lechesDialog.close();
         saborizantesDialog.close();
         heladosDialog.close();
+        toppingTaroDialog.close();
         dialog.close();
     }
 }
@@ -396,7 +401,12 @@ function agregarBatido() {
         const producto = checkbox.value;
         batido.push(producto);
     }
+    
     });
+    if (batido.length === 0) {
+        alert('Debe seleccionar al menos un ingrediente para el batido.');
+        return;
+    }
     bebida = batido.join(', ');
     checkboxes.forEach(checkbox => {
     checkbox.checked = false;
@@ -454,6 +464,20 @@ function abrirVentanaSiropes() {
 function agregarSiropes(botonPulsado) {
     saborizante = botonPulsado.value;
     const ventana = document.getElementById('dialog_ventanaSiropes');
+    ventana.style.display = 'none';
+    ventana.close();
+    agregarCarrito();
+}
+
+function abrirVentanaToppingTaro() {
+    const ventana = document.getElementById('dialog_ventanaToppingTaro');
+    ventana.style.display = 'block';
+    ventana.showModal();
+}
+
+function agregarToppingTaro(botonPulsado) {
+    bebida += ' ' + botonPulsado.value;
+    const ventana = document.getElementById('dialog_ventanaToppingTaro');
     ventana.style.display = 'none';
     ventana.close();
     agregarCarrito();
@@ -621,3 +645,5 @@ window.abrirVentanaOpcionesJugoVerde = abrirVentanaOpcionesJugoVerde;
 window.agregarOpcionesJugoVerde = agregarOpcionesJugoVerde;
 window.abrirVentanaSiropes = abrirVentanaSiropes;
 window.agregarSiropes = agregarSiropes;
+window.abrirVentanaToppingTaro = abrirVentanaToppingTaro;
+window.agregarToppingTaro = agregarToppingTaro;

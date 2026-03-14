@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=1.2.6">
-    <script type="module" src="nose.js?v=1.1.8" defer></script>
+    <link rel="stylesheet" href="style.css?v=1.2.7">
+    <script type="module" src="nose.js?v=1.1.9" defer></script>
 
     <title>Zarcereño Afuera</title>
 </head>
@@ -183,7 +183,7 @@
                 <label for="btnBatidoLeche" class="caja">
                     <p class="nombreProductos">En Leche</p>
                     <div class="imagenPedido BatidoLeche"></div>
-                    <button type="button" class="btnAgregar" id="btnBatidoLeche" value="Batido en Leche" onclick="abrirVentanaNumerosBatidosLeche()">AGREGAR</button>
+                    <button type="button" class="btnAgregar" id="btnBatidoLeche" value="Batido en Leche" onclick="abrirVentanaNumerosBatidosLeche(this)">AGREGAR</button>
                 </label>
                 <!-- Batido en Agua -->
                 <label for="btnBatidoAgua" class="caja">
@@ -447,7 +447,7 @@
             <label for="btnTaro" class="caja">
                 <p class="nombreProductos">Taro</p>
                 <div class="imagenPedido Taro"></div>
-                <button class="btnAgregar" id="btnTaro" value="Taro" onclick="agregar(this)">AGREGAR</button>
+                <button class="btnAgregar" id="btnTaro" value="Taro" onclick="abrirVentanaToppingTaro(), agregar(this)">AGREGAR</button>
             </label>
             <!-- Limonada -->
             <label for="btnLimonadaRegular" class="caja">
@@ -868,6 +868,29 @@
                     </div>
                 </section>
                 <button class="btnSalirDialog" id="btnCerrarSiropes" onclick="cerrarVentana('dialog_ventanaSiropes')">Cancelar</button>
+            </div>
+        </dialog>
+
+        <dialog class="dialog" id="dialog_ventanaToppingTaro">
+            <div class="dialog_content">
+                <p>Topping para Taro</p>
+                <section class="section">
+                    <div class="dialog_productos">
+                        <!-- Ninguno -->
+                        <label for="btnSinToppingTaro" class="caja">
+                            <p class="nombreProductos">Sin Topping</p>
+                            <div class="imagenPedido SinToppingTaro"></div>
+                            <button class="btnAgregar" id="btnSinToppingTaro" name="nombreProducto" value="Sin topping" onclick="agregarToppingTaro(this)">AGREGAR</button>
+                        </label>
+                        <!-- Topping de Tapioca -->
+                        <label for="btnToppingTapioca" class="caja">
+                            <p class="nombreProductos">Tapioca</p>
+                            <div class="imagenPedido Tapioca"></div>
+                            <button class="btnAgregar" id="btnToppingTapioca" name="nombreProducto" value="Con Tapioca" onclick="agregarToppingTaro(this)">AGREGAR</button>
+                        </label>
+                    </div>
+                </section>
+                <button class="btnSalirDialog" id="btnCerrarToppingTaro" onclick="cerrarVentana('dialog_ventanaToppingTaro')">Cancelar</button>
             </div>
         </dialog>
 
