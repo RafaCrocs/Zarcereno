@@ -131,7 +131,7 @@ function confirmarEnvio() {
 
     // Obtener sucursal y origen de la URL
     const urlParams = new URLSearchParams(window.location.search);
-    const sucursal = urlParams.get('sucursal') || 'SanRamon'; // Por defecto SanRamon
+    const sucursal = urlParams.get('sucursal') || 'SinSucursal'; // Por defecto "SinSucursal" si no se encuentra en la URL
     const origen = urlParams.get('origen') || ''; // Por defecto nada
 
     const nombreCliente = document.getElementById('nombreCliente').value || "";
@@ -153,7 +153,13 @@ function confirmarEnvio() {
 
     const pedidosRef = ref(database, 'pedidos');
     const nuevoPedidoRef = push(pedidosRef);
-    numeroPedido ++;
+    const horaCostaRica = new Date().toLocaleTimeString('es-CR', {
+        timeZone: 'America/Costa_Rica',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true // O false para formato 24h
+    });
     
     set(nuevoPedidoRef, {
         cliente: nombreCliente,
@@ -162,8 +168,7 @@ function confirmarEnvio() {
         origen: origen,
         tipo: tipoPedido,
         items: carrito,
-        fecha: new Date().toISOString(),
-        numeroPedido: numeroPedido
+        hora: horaCostaRica
     })
     .then(() => {
         historial.push({
@@ -173,7 +178,7 @@ function confirmarEnvio() {
             origen: origen,
             tipo: tipoPedido,
             items: carrito,
-            fecha: new Date().toISOString()
+            hora: horaCostaRica
         });
         limpiarCarrito();
         document.getElementById('nombreCliente').value = '';
@@ -216,7 +221,6 @@ let historial = [];
 let bebida;
 let leche;
 let saborizante;
-let numeroPedido = 0;
 const tiemposTextoAgregar = new WeakMap();
 
 function mostrarAgregadoTemporalmente(botonPulsado) {
@@ -590,7 +594,7 @@ function crearTablaHistorial() {
 
     ultimos10.forEach((pedido) => {
         const hora = pedido.fecha
-            ? new Date(pedido.fecha).toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit' })
+            ? new Date(pedido.fecha).toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Costa_Rica' })
             : '';
         htmlTabla += `
             <tr>

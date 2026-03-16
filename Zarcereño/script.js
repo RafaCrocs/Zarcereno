@@ -10,13 +10,7 @@ let audioHabilitado = false;
 
 
 const urlParams = new URLSearchParams(window.location.search);
-const sucursalUrl = urlParams.get('sucursal');
-
-if (sucursalUrl) {
-    localStorage.setItem('sucursal_config', sucursalUrl);
-}
-
-const sucursalActual = localStorage.getItem('sucursal_config') || 'SanRamon';
+const sucursalActual = urlParams.get('sucursal') || 'SinSucursal';
 
 // Actualizar el título para mostrar la sucursal actual
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,12 +47,17 @@ function reproducirNotificacion() {
 }
 
 function obtenerClaveDiaLocal() {
-    const fecha = new Date();
-    const anio = fecha.getFullYear();
-    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
-    const dia = String(fecha.getDate()).padStart(2, '0');
-    return `${anio}-${mes}-${dia}`;
+    const fechaCR = new Date().toLocaleDateString('sv-SE', { timeZone: 'America/Costa_Rica' });
+    return fechaCR;
 }
+
+const horaCostaRica = new Date().toLocaleTimeString('es-CR', {
+    timeZone: 'America/Costa_Rica',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true // O false para formato 24h
+});
 
 // Bloquear el botón de retroceso
 history.pushState(null, null, location.href);
@@ -75,7 +74,7 @@ async function iniciarEscuchaPedidos() {
         const pedidoId = snapshot.key;
 
         // Filtrar automáticamente por sucursal
-        const pedidoSucursal = pedido.sucursal || 'SanRamon'; // Compatibilidad
+        const pedidoSucursal = pedido.sucursal || 'SinSucursal'; // Compatibilidad
         if (pedidoSucursal !== sucursalActual) return;
 
         if (pedido && pedido.items && !pedidosMostrados.has(pedidoId)) {
@@ -89,7 +88,7 @@ async function iniciarEscuchaPedidos() {
         const pedidoId = snapshot.key;
         
         // Filtrar automáticamente por sucursal
-        const pedidoSucursal = pedido.sucursal || 'SanRamon'; // Compatibilidad
+        const pedidoSucursal = pedido.sucursal || 'SinSucursal'; // Compatibilidad
 
         if (pedidoSucursal !== sucursalActual) {
             return;
@@ -188,7 +187,6 @@ window.completarPedido = async function(boton) {
             }, 0)
             : 0;
 
-        pedidoData.completadoEn = new Date().toISOString();
         pedidoData.numeroProductosVendidos = numeroProductosVendidos;
 
         const diaClave = obtenerClaveDiaLocal();
@@ -200,19 +198,19 @@ window.completarPedido = async function(boton) {
             return {
                 productosVendidos: (Number(estadoActual.productosVendidos) || 0) + numeroProductosVendidos,
                 pedidosCompletados: (Number(estadoActual.pedidosCompletados) || 0) + 1,
-                ultimaActualizacion: new Date().toISOString()
+                ultimaActualizacion: new Date().toLocaleString('sv-SE', { timeZone: 'America/Costa_Rica' })
             };
         });
 
         if(sucursalActual === 'SanRamon') {
-            const completadoRef = ref(database, 'pedidos_completados_SanRamon/' + pedidoId);
+            const completadoRef = ref(database, `pedidos_completados_SanRamon/${diaClave}/` + pedidoId);
             await set(completadoRef, pedidoData);
         } else if(sucursalActual === 'Orotina') {
-            const completadoRef = ref(database, 'pedidos_completados_Orotina/' + pedidoId);
+            const completadoRef = ref(database, `pedidos_completados_Orotina/${diaClave}/` + pedidoId);
             await set(completadoRef, pedidoData);
         }
         else if(sucursalActual === 'Liberia') {
-            const completadoRef = ref(database, 'pedidos_completados_Liberia/' + pedidoId);
+            const completadoRef = ref(database, `pedidos_completados_Liberia/${diaClave}/` + pedidoId);
             await set(completadoRef, pedidoData);
         }
     }
